@@ -3,13 +3,15 @@
 
 <mapper namespace="boot.no.dao.UserMapper">
 
+    <!--注册-->
     <insert id="addUser" parameterType="User">
             INSERT INTO user
             VALUES(#{userId}, #{username}, #{userpwd})
     </insert>
 
-<!--    <select id="checkUser" parameterType="String" resultType="String">-->
-<!--            SELECT user_pwd FROM user-->
-<!--            WHERE user_name = #{username}-->
-<!--    </select>-->
+    <!--登录-->
+    <select id="checkUser" parameterType="String" resultType="String">
+            SELECT user_pwd FROM user
+            WHERE user_name = #{username}
+    </select>
 </mapper>

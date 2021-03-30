@@ -16,7 +16,7 @@ public class UserService {
         userMapper.addUser(user);
     }
 
-//    public String checkUser(String pwd) {
-//        return userMapper.checkUser(pwd);
-//    }
+    public String checkUser(String pwd) {
+        return userMapper.checkUser(pwd);
+    }
 }

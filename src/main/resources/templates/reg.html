@@ -5,7 +5,7 @@
     <title>注册页面</title>
 </head>
 <body>
-<form method="POST" th:action="@{/user/reg}" th:object="${user}">
+<form method="POST" th:action="@{/reg}" th:object="${user}">
     <label>id</label><input type="number" th:field="*{userId}"><br/>
     <label>账户</label><input type="text" id="username" th:field="*{username}" required><br/>
     <label>密码</label><input type="password" th:field="*{userpwd}" required><br/>

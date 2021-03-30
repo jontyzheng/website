@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * /user/reg (post) 用户注册
  * */
 @Controller
-@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -29,16 +28,16 @@ public class UserController {
         return "result";
     }
 
-//    @PostMapping("/login")
-//    public String checkUser(@ModelAttribute User user, Model model) {
-//        String account = user.getUsername();
-//        String pwd = user.getUserpwd();
-//        String realPwd = userService.checkUser(account);
-//        if (pwd.equals(realPwd))
-//            return "index";
-//        else {
-//            model.addAttribute("msg", "用户名或密码有误, 请重新登录!");
-//            return "login";
-//        }
-//    }
+    @PostMapping("/login")
+    public String checkUser(@ModelAttribute User user) {
+        String account = user.getUsername();
+        String pwd = user.getUserpwd();
+        String realPwd = userService.checkUser(account);
+        System.out.println(realPwd);
+        if (pwd.equals(realPwd))
+            return "redirect:index";
+        else {
+            return "login";
+        }
+    }
 }

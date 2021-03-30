@@ -6,5 +6,5 @@ public interface UserMapper {
 
     void addUser(User user);
 
-//    String checkUser(String pwd);
+    String checkUser(String pwd);
 }

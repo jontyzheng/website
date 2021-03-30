@@ -29,4 +29,10 @@ public class MainController {
         model.addAttribute(new User());
         return "reg";
     }
+
+    @RequestMapping("/login")
+    public String toLogin(Model model) {
+        model.addAttribute(new User());
+        return "login";
+    }
 }

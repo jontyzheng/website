@@ -6,11 +6,11 @@
 </head>
 <body>
 <h1>用户登录</h1>
-    <form th:action="@{/user/login}" method="post" th:object="*{user}">
+    <form th:action="@{/login}" method="post" th:object="${user}">
+        <input type="number" th:field="*{userId}" hidden><br/><!--可以不填, 但不能没有-->
         <label>账号</label><input type="text" name="username" th:field="*{username}"><br/>
         <label>密码</label><input type="password" name="userpwd" th:field="*{userpwd}"><br/>
         <input type="submit" value="登录">
     </form>
-    <p type="text" th:text="*{msg}"></p>
 </body>
 </html>
