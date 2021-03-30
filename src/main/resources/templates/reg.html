@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+</head>
+<body>
+<form method="POST" th:action="@{/user/reg}" th:object="${user}">
+    <label>id</label><input type="number" th:field="*{userId}"><br/>
+    <label>账户</label><input type="text" id="username" th:field="*{username}" required><br/>
+    <label>密码</label><input type="password" th:field="*{userpwd}" required><br/>
+    <label>确认</label><input type="password" id="userpwd2" required><br/>
+    <input type="submit" value="注册" onclick="regCheck()"/>
+</form>
+<script>
+    var eg = {};    //  对象声明
+    //公共函数获取元素
+    eg.$ = function(id) {
+        return document.getElementById(id);
+    };
+
+    regCheck = function() {
+        var upwd1 = eg.$("userpwd1");
+        var upwd2 = eg.$("userpwd2");
+        if (upwd2.value != upwd1.value) {
+            alert('两次密码输入不相同, 请重新输入');
+            return false;
+        }
+        alert("注册成功");
+        return true;
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+
+<a th:href="@{reg}"><h3>前往注册</h3></a>
+
+
+<div th:if="${#lists.isEmpty(students)}">students集合为空</div>
+
+<div th:if="${not #lists.isEmpty(students)}">
+    <p th:text="${name}">ppp</p>
+
+    <table>
+        <thead>
+        <tr>
+            <th>学生id</th>
+            <th>学生姓名</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="student:${students}">
+            <td th:text="${student.id}">xxx</th>
+            <td th:text="${student.name}">xxx</th>
+        </tr>
+        </tbody>
+    </table>
+<!--    <header>-->
+<!--        <a><img class="img-logo" src="" alt="LOGO"></a>-->
+<!--        <ul class="nav-ul">-->
+<!--            <a href="#"><li>超链接1</li></a>-->
+<!--            <a href="#"><li>超链接2</li></a>-->
+<!--            <a href="#"><li>超链接3</li></a>-->
+<!--            <a href="#"><li>超链接4</li></a>-->
+<!--        </ul>-->
+<!--    </header>-->
+
+<!--    <div class="rest">-->
+<!--        <main>-->
+<!--            <article>-->
+<!--                <h2>标题</h2>-->
+<!--                <p>内容-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
+<!--            </article>-->
+<!--            <article>-->
+<!--                <h2>标题</h2>-->
+<!--                <p>内容-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
+<!--            </article>-->
+<!--            <article>-->
+<!--                <h2>标题</h2>-->
+<!--                <p>内容-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
+<!--            </article>-->
+<!--            <article>-->
+<!--                <h2>标题</h2>-->
+<!--                <p>内容-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
+<!--            </article>-->
+<!--            main-->
+<!--        </main>-->
+
+<!--        <aside>-->
+<!--            <figure>-->
+<!--                <img class="img-avatar" src="../static/image/avatar-default.jpg" alt="头像">-->
+<!--                <figcaption>-->
+<!--                    blablabla-->
+<!--                </figcaption>-->
+<!--            </figure>-->
+<!--        </aside>-->
+<!--        <footer>-->
+<!--            2021 copyright-->
+<!--        </footer>-->
+<!--    </div>-->
+</div>
+</body>
+</html>
