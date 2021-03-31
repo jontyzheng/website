@@ -1,5 +1,6 @@
 package boot.no.controller;
 
+import boot.no.pojo.Blog;
 import boot.no.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,4 +36,11 @@ public class MainController {
         model.addAttribute(new User());
         return "login";
     }
+
+    @RequestMapping("/blogadd")
+    public String toEdit(Model model) {
+        model.addAttribute(new Blog());
+        return "blog-add";
+    }
+
 }

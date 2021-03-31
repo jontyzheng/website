@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>添加博客</title>
+</head>
+<body>
+    <form th:action="@{/blogadd}" method="POST" th:object="${blog}">
+        <label>编号:</label><input type="text" th:field="*{id}"><br/>
+        <label>标题: </label><input type="text" th:field="*{title}"><br/>
+        <label>标签: </label>
+        <select name="tags" th:field="*{tags}">
+            <option value="Java">Java</option>
+            <option value="MySQL">MySQL</option>
+            <option value="Python">Python</option>
+            <option value="Leet">Leet</option>
+            <option value="Git">Git</option>
+            <option value="others">其它</option>
+        </select>
+        <br/>
+        <label>描述: </label><input type="text" th:field="*{description}"><br/>
+        <label>内容: </label>
+        <div id="test-md">
+            <textarea th:field="*{content}" rows="30" cols="100"></textarea>
+        </div>
+        <br/>
+<!--        <input type="date" th:field="*{createDate}" hidden>-->
+<!--        <input type="button" th:filed="*{readSize}" value="阅读量" hidden><br/>-->
+        <input type="submit" value="提交">
+    </form>
+editormd("test-md", {
+    width: "90%",
+    height: 640.
+    syncScrolling: "single",
+    path: "<%=request.getContextPath()%>/resources/editormd/lib/",
+    saveHTMLToTestarea: true
+});
+</body>
+</html>
