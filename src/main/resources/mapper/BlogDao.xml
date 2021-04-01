@@ -4,6 +4,10 @@
 
     <insert id="addBlog" parameterType="blog">
             INSERT INTO blog
-            VALUES ( #{id}, #{title}, #{tags}, #{description}, #{content})
+            VALUES (#{id}, #{title}, #{tags}, #{description}, #{content})
     </insert>
+
+    <select id="listBlog" resultType="blog">
+            SELECT * from blog
+    </select>
 </mapper>

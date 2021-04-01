@@ -14,16 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
 
-    @RequestMapping("/")
-    public String root() {
-        return "redirect:/index";
-    }
-
-    @RequestMapping("/index")
-    public String toIndex() {
-        return "index";
-    }
-
     @RequestMapping("/reg")
     public String toReg(Model model) {
         //向 reg.html 页面添加一个 user 对象

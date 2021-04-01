@@ -8,7 +8,7 @@ public class Blog {
 
     private long id;
     private String title;
-    private String description;
+    private String profile;
     private String content;
     //private Timestamp createDate;
     //private int readSize;
@@ -31,12 +31,12 @@ public class Blog {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getProfile() {
+        return profile;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 
     public String getContent() {

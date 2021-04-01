@@ -11,26 +11,22 @@
 <a th:href="@{login}"><h3>直接登录</h3></a>
 <a th:href="@{blogadd}"><h3>写文章</h3></a>
 
-<div th:if="${#lists.isEmpty(students)}">students集合为空</div>
+<div th:if="${#lists.isEmpty(blogs)}">博客为空</div>
 
-<div th:if="${not #lists.isEmpty(students)}">
-    <p th:text="${name}">ppp</p>
-
-    <table>
-        <thead>
-        <tr>
-            <th>学生id</th>
-            <th>学生姓名</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr th:each="student:${students}">
-            <td th:text="${student.id}">xxx</th>
-            <td th:text="${student.name}">xxx</th>
-        </tr>
-        </tbody>
-    </table>
+<div th:if="${not #lists.isEmpty(blogs)}">
+    <dl th:each = "blog : ${blogs}" class="article">
+        <dt>
+            <span th:text="${blog.title}">标题</span><br/>
+            <span th:text="${blog.tags}">标签</span><br/>
+        </dt>
+        <dd>
+            <span th:if="${blog.profile}"
+                  th:text="${blog.profile}">简要
+            </span>
+        </dd>
+    </dl>
+    <hr/>
+</div>
 <!--    <header>-->
 <!--        <a><img class="img-logo" src="" alt="LOGO"></a>-->
 <!--        <ul class="nav-ul">-->
@@ -74,6 +70,5 @@
 <!--            2021 copyright-->
 <!--        </footer>-->
 <!--    </div>-->
-</div>
 </body>
 </html>
