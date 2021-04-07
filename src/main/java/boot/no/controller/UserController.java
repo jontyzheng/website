@@ -1,10 +1,11 @@
 package boot.no.controller;
 
-import boot.no.pojo.User;
+import boot.no.model.User;
 import boot.no.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,24 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @GetMapping("/users")
+    public String toUser() {
+        return "/users/index";
+    }
+
+    @RequestMapping("/reg")
+    public String toReg(Model model) {
+        //向 reg.html 页面添加一个 user 对象
+        model.addAttribute(new User());
+        return "/users/reg";
+    }
+
+    @RequestMapping("/login")
+    public String toLogin(Model model) {
+        model.addAttribute(new User());
+        return "/users/login";
+    }
 
     @PostMapping("/reg")
     public String addUser(@ModelAttribute User user) {
@@ -37,7 +56,7 @@ public class UserController {
         if (pwd.equals(realPwd))
             return "redirect:index";
         else {
-            return "login";
+            return "/users/login";
         }
     }
 }

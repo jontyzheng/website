@@ -1,74 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+<!--  head 标签一旦添加 th:replace="layout::site-head"  应用启动后就无法正常显示   -->
     <title>index</title>
-    <link rel="stylesheet" href="/css/index.css">
+<!--    <link rel="stylesheet" th:href="@{css/index.css}">-->
 </head>
 <body>
-
-<a th:href="@{reg}"><h3>前往注册</h3></a>
-<a th:href="@{login}"><h3>直接登录</h3></a>
-<a th:href="@{blogadd}"><h3>写文章</h3></a>
-
-<div th:if="${#lists.isEmpty(blogs)}">博客为空</div>
-
-<div th:if="${not #lists.isEmpty(blogs)}">
-    <dl th:each = "blog : ${blogs}" class="article">
-        <dt>
-            <span th:text="${blog.title}">标题</span><br/>
-            <span th:text="${blog.tags}">标签</span><br/>
-        </dt>
-        <dd>
-            <span th:if="${blog.profile}"
-                  th:text="${blog.profile}">简要
-            </span>
-        </dd>
-    </dl>
-    <hr/>
-</div>
-<!--    <header>-->
-<!--        <a><img class="img-logo" src="" alt="LOGO"></a>-->
-<!--        <ul class="nav-ul">-->
-<!--            <a href="#"><li>超链接1</li></a>-->
-<!--            <a href="#"><li>超链接2</li></a>-->
-<!--            <a href="#"><li>超链接3</li></a>-->
-<!--            <a href="#"><li>超链接4</li></a>-->
-<!--        </ul>-->
-<!--    </header>-->
-
-<!--    <div class="rest">-->
-<!--        <main>-->
-<!--            <article>-->
-<!--                <h2>标题</h2>-->
-<!--                <p>内容-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
-<!--            </article>-->
-<!--            <article>-->
-<!--                <h2>标题</h2>-->
-<!--                <p>内容-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
-<!--            </article>-->
-<!--            <article>-->
-<!--                <h2>标题</h2>-->
-<!--                <p>内容-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
-<!--            </article>-->
-<!--            <article>-->
-<!--                <h2>标题</h2>-->
-<!--                <p>内容-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
-<!--            </article>-->
-<!--            main-->
-<!--        </main>-->
-
-<!--        <aside>-->
-<!--            <figure>-->
-<!--                <img class="img-avatar" src="../static/image/avatar-default.jpg" alt="头像">-->
-<!--                <figcaption>-->
-<!--                    blablabla-->
-<!--                </figcaption>-->
-<!--            </figure>-->
-<!--        </aside>-->
-<!--        <footer>-->
-<!--            2021 copyright-->
-<!--        </footer>-->
-<!--    </div>-->
+    <header th:replace="layout::site-header"/>
+    <h1>index.html</h1>
+    Now is: <b th:text="${execInfo.now.time}">date and time</b>
+    <footer th:replace="layout::site-footer"/>
 </body>
 </html>

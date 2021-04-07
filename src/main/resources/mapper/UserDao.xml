@@ -4,10 +4,12 @@
 <mapper namespace="boot.no.dao.UserMapper">
 
     <!--注册-->
-    <insert id="addUser" parameterType="User">
-            INSERT INTO user
-            VALUES(#{userId}, #{username}, #{userpwd})
+    <insert id="addUser" parameterType="user">
+            INSERT INTO user(user_name, user_pwd)
+            VALUES(#{username}, #{userpwd})
     </insert>
+
+    <!--完善信息-->
 
     <!--登录-->
     <select id="checkUser" parameterType="String" resultType="String">

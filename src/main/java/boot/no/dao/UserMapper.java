@@ -1,6 +1,6 @@
 package boot.no.dao;
 
-import boot.no.pojo.User;
+import boot.no.model.User;
 
 public interface UserMapper {
 

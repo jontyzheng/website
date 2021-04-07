@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>添加博客</title>
+<!--    <script type="text/javascript" src="../static/js/post-add.js" th:src="@{/js/post-add.js}"></script>-->
+</head>
+<body>
+    <header th:replace="layout::header"></header>
+
+    <form method="post" th:action="@{/post}">
+        <label>标签: </label>
+        <select name="tag">
+            <option value="Java">Java</option>
+            <option value="MySQL">MySQL</option>
+            <option value="Python">Python</option>
+            <option value="Leet">Leet</option>
+            <option value="Git">Git</option>
+            <option value="others">其它</option>
+        </select>
+        <br/>
+        <label>标题: </label><input type="text" name="title"><br/>
+        <label>描述: </label><input type="text" name="profile"><br/>
+        <label>内容: </label>
+        <div id="test-md">
+            <textarea name="body" rows="30" cols="100"></textarea>
+        </div>
+        <br/>
+<!--        <input type="text" name="author" value="${user/username}">-->
+<!--        <input type="date" name="date" hidden>-->
+<!--        <input type="button" th:filed="*{readSize}" value="阅读量" hidden><br/>-->
+        <input type="submit" value="提交" onclick="getDate()">
+    </form>
+
+    <footer th:replace="layout::footer"></footer>
+</body>
+</html>

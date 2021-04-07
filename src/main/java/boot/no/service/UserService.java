@@ -2,7 +2,7 @@ package boot.no.service;
 
 
 import boot.no.dao.UserMapper;
-import boot.no.pojo.User;
+import boot.no.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

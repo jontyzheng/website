@@ -1,9 +1,9 @@
 package boot.no.controller;
 
-import boot.no.pojo.Blog;
-import boot.no.pojo.User;
+import boot.no.model.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * 功能: 页面控制器
@@ -14,23 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
 
-    @RequestMapping("/reg")
-    public String toReg(Model model) {
-        //向 reg.html 页面添加一个 user 对象
-        model.addAttribute(new User());
-        return "reg";
+    @GetMapping("/")
+    public String defaultIndex() {
+        return "index";
     }
 
-    @RequestMapping("/login")
-    public String toLogin(Model model) {
-        model.addAttribute(new User());
-        return "login";
-    }
-
-    @RequestMapping("/blogadd")
-    public String toEdit(Model model) {
-        model.addAttribute(new Blog());
-        return "blog-add";
+    @GetMapping("/index")
+    public String toIndex() {
+        return "index";
     }
 
 }
