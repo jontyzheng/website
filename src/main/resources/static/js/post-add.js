@@ -4,12 +4,13 @@ eg.$ = function (id) {
     return document.getElementById(id);
 }
 
-getDate = function () {
+setDate = function () {
     alert("已触发 post-add.js");
-    var date = document.getElementByClassName("date");
-    var present = new Date();
-    date.value = present.getFullYear() + present.getMonth() + present.getDate();
-    alert("当前时间为" + date);
-    //date.value = date();
+    var dateInput = eg.$("date");
+    var dater = new Date();
+    //var date = dater.valueOf();
+    var date = dater.toISOString().substring(0, 10);
+    dateInput.value = date;
+    alert(dateInput.value);
     return true;
 }

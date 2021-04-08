@@ -36,9 +36,8 @@ public class PostController {
     @PostMapping("/post")
     public String addPost(Post post) {
         System.out.println("经过了这里");
-        System.out.println(post.getTitle());
+        System.out.println(post.getDate());
         postService.addPost(post);
         return "posts/post-success";
     }
-
 }

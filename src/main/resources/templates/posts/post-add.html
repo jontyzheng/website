@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>添加博客</title>
-<!--    <script type="text/javascript" src="../static/js/post-add.js" th:src="@{/js/post-add.js}"></script>-->
+    <script type="text/javascript" src="../static/js/post-add.js" th:src="@{/js/post-add.js}"></script>
 </head>
 <body>
     <header th:replace="layout::header"></header>
@@ -26,10 +26,8 @@
             <textarea name="body" rows="30" cols="100"></textarea>
         </div>
         <br/>
-<!--        <input type="text" name="author" value="${user/username}">-->
-<!--        <input type="date" name="date" hidden>-->
-<!--        <input type="button" th:filed="*{readSize}" value="阅读量" hidden><br/>-->
-        <input type="submit" value="提交" onclick="getDate()">
+        <input type="date" id="date" name="date" hidden>
+        <input type="submit" value="提交" onclick="setDate()">
     </form>
 
     <footer th:replace="layout::footer"></footer>

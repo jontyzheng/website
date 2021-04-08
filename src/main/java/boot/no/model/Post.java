@@ -1,6 +1,11 @@
 package boot.no.model;
 
-import java.util.Date;
+import boot.no.util.TimeSwitcher;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.text.ParseException;
+import java.sql.Date;
+//修改数据类型!
 
 public class Post {
     private Long id;
@@ -9,7 +14,7 @@ public class Post {
     private String profile;
     private String body;
     private String author;    //对应外键
-    //private Date date = new Date();
+    private Date date; //对应 db 中 date 类型的字段 date
 
     public Long getId() {
         return id;
@@ -51,13 +56,14 @@ public class Post {
         this.author = author;
     }
 
-//    public Date getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(Date date) {
-//        this.date = date;
-//    }
+    public Date getDate() {
+        return date;
+    }
+
+    //用工具类
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public String getTag() {
         return tag;

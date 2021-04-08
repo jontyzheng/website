@@ -3,8 +3,8 @@
 <mapper namespace="boot.no.dao.PostMapper">
 
     <insert id="addPost" parameterType="post">
-            INSERT INTO post(tag, title, profile, body)
-            VALUES (#{tag}, #{title}, #{profile}, #{body})
+            INSERT INTO post(tag, title, profile, body, date)
+            VALUES (#{tag}, #{title}, #{profile}, #{body}, #{date})
     </insert>
 
     <select id="listPost" resultType="post">
