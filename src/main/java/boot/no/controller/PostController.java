@@ -5,10 +5,7 @@ import boot.no.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,12 +29,23 @@ public class PostController {
         return "posts/post-add";
     }
 
-    //Post post
     @PostMapping("/post")
     public String addPost(Post post) {
         System.out.println("经过了这里");
         System.out.println(post.getDate());
         postService.addPost(post);
         return "posts/post-success";
+    }
+    //2021-04-06 404 Bad Request closed
+
+    //
+    @GetMapping("/posts/{tag}")
+    public String listByTag(@PathVariable String tag, Model model) {
+        System.out.println("经过了这里");
+        System.out.println(tag);
+        //return "result";
+        List<Post> tagPosts = postService.listByTag(tag);
+        model.addAttribute("tagPosts", tagPosts);
+        return "/posts/tag-post";
     }
 }

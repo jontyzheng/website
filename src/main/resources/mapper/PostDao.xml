@@ -7,7 +7,13 @@
             VALUES (#{tag}, #{title}, #{profile}, #{body}, #{date})
     </insert>
 
+    <!--查询所有博客-->
     <select id="listPost" resultType="post">
             SELECT * from post
+    </select>
+
+    <select id="listByTag" resultType="post" parameterType="String">
+            SELECT tag, profile, body, date FROM post
+            WHERE tag = #{tag}
     </select>
 </mapper>

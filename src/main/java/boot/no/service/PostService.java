@@ -21,6 +21,10 @@ public class PostService {
         return postMapper.listPost();
     }
 
+    public List<Post> listByTag(String tag) {
+        return postMapper.listByTag(tag);
+    }
+
 //    List<Post> findAll() {
 //        return postMapper.findAll();
 //    }

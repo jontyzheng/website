@@ -8,6 +8,13 @@
 <body>
     <header th:replace="layout::site-header"/>
     <h1>index.html</h1>
+    <ul>
+        <li><a th:href="@{/posts/Python}">Python</a></li>
+        <li><a th:href="@{/posts/Java}">Java</a></li>
+        <li><a th:href="@{/posts/MySQL}">MySQL</a></li>
+        <li><a th:href="@{/posts/js}">js</a></li>
+        <li><a th:href="@{/posts/css}">css</a></li>
+    </ul>
     Now is: <b th:text="${execInfo.now.time}">date and time</b>
     <footer th:replace="layout::site-footer"/>
 </body>
