@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-<!--  head 标签一旦添加 th:replace="layout::site-head"  应用启动后就无法正常显示   -->
+<head th:insert="layout.html :: headFragment">
     <title>index</title>
-<!--    <link rel="stylesheet" th:href="@{css/index.css}">-->
 </head>
 <body>
     <header th:replace="layout::site-header"/>
@@ -15,6 +13,8 @@
         <li><a th:href="@{/posts/js}">js</a></li>
         <li><a th:href="@{/posts/css}">css</a></li>
     </ul>
+    <!-- 2021-04-07 14:47:39-->
+
     Now is: <b th:text="${execInfo.now.time}">date and time</b>
     <footer th:replace="layout::site-footer"/>
 </body>

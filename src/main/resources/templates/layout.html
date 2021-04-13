@@ -1,45 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:fragment="site-head">
-    <meta charset="UTF-8"/>
-
-    <link rel="stylesheet" href="../static/css/style.css"
-          th:href="@{/css/style.css}"/>
-
-    <link rel="icon" href="../static/img/avatar-default.jpg"
-          th:href="@{/img/avatar-default.jpg}"/>
-
-    <script src="../static/js/jq.js" th:src="@{/js/jq.js}"></script>
-<!--    <script src="../static/js/blog-scripts.js" th:src="@{/js/blog-scripts.js}"></script>-->
-
-    <meta th:include="this::head" th:remove="tag"/>
-
+<head th:fragment="headFragment">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+<!--    <link rel="icon" th:href="@{/img/avatar-default.jpg}"/>-->
+<!--    <script th:src="@{/js/jq.js}"></script>-->
+<!--    <meta th:include="this::head"/>-->
 </head>
-<!--
-    header
-    menu
-    footer
-    css
--->
 <body>
     <header th:fragment="site-header">
         <a href="index.html" th:href="@{/}"><img src="../static/img/site-logo.png"
                                                  th:src="@{img/site-logo.png}"/></a>
         <a href="index.html" th:href="@{/}">Home</a>
-        <a href="users/login.html" th:href="@{/login}">Login</a>
-        <a href="users/reg.html" th:href="@{/reg}">Register</a>
+        <a href="me/login.html" th:href="@{/me/login}">Login</a>
+        <a href="me/register.html" th:href="@{/me/register}">Register</a>
 
         <a href="posts/index.html" th:href="@{/posts}">Posts</a>
 
         <a href="posts/post-add.html" th:href="@{/posts/post}">Create Post</a>
 
-        <a href="users/index.html" th:href="@{/users}">Users</a>
-        <div id="logged-in-info">
-            <span>Hello, <b>(user)</b></span>
-            <form th:action="@{/user/logout}">
-                <input type="submit" value="logout"/>
-            </form>
-        </div>
+        <a href="me/index.html" th:href="@{/me}">Users</a>
+        <a href="me/about.html" th:href="@{/me/about}">关于站长</a>
+        <a href="me/edit.html" th:href="@{/me/edit}">修改信息</a>
     </header>
     <h1>Welcome</h1>
     <p>Welcome to the Spring MVC Blog.</p>

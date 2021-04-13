@@ -19,4 +19,12 @@ public class UserService {
     public String checkUser(String pwd) {
         return userMapper.checkUser(pwd);
     }
+
+    public User showAbout() {
+        return userMapper.showAbout();
+    }
+
+    public void updateAbout(User user) {
+        userMapper.updateAbout(user);
+    }
 }

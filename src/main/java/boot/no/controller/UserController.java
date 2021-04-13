@@ -21,42 +21,59 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/users")
+    @GetMapping("/me")
     public String toUser() {
-        return "/users/index";
+        return "/me/profile";
     }
 
-    @RequestMapping("/reg")
+    @RequestMapping("/me/register")
     public String toReg(Model model) {
-        //向 reg.html 页面添加一个 user 对象
+        //向 register.html 页面添加一个 user 对象
         model.addAttribute(new User());
-        return "/users/reg";
+        return "/me/register";
     }
 
-    @RequestMapping("/login")
+    @RequestMapping("/me/login")
     public String toLogin(Model model) {
         model.addAttribute(new User());
-        return "/users/login";
+        return "/me/login";
     }
 
-    @PostMapping("/reg")
+    @PostMapping("/me/register")
     public String addUser(@ModelAttribute User user) {
         userService.addUser(user);
-        System.out.println(user.getUsername());
-        System.out.println(user.getUserpwd());
         return "result";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/me/login")
     public String checkUser(@ModelAttribute User user) {
-        String account = user.getUsername();
-        String pwd = user.getUserpwd();
+        String account = user.getName();
+        String pwd = user.getPwd();
         String realPwd = userService.checkUser(account);
         System.out.println(realPwd);
         if (pwd.equals(realPwd))
             return "redirect:index";
         else {
-            return "/users/login";
+            return "/me/login";
         }
     }
+
+    @GetMapping("/me/about")
+    public String profile(Model model) {
+        User user = userService.showAbout();
+        model.addAttribute(user);
+        return "/me/about";
+    }
+
+    @GetMapping("/me/edit")
+    public String edit() {
+        return "/me/edit";
+    }
+
+    @PostMapping("/me/edit")
+    public String editAbout(User user) {
+        userService.updateAbout(user);
+        return "/me/about";
+    }
 }
+

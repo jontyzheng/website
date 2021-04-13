@@ -1,9 +1,5 @@
 package boot.no.model;
 
-import boot.no.util.TimeSwitcher;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.text.ParseException;
 import java.sql.Date;
 //修改数据类型!
 

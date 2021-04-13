@@ -16,4 +16,6 @@
             SELECT tag, profile, body, date FROM post
             WHERE tag = #{tag}
     </select>
+
+
 </mapper>

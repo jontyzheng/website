@@ -5,10 +5,10 @@
     <title>注册页面</title>
 </head>
 <body>
-<form method="POST" th:action="@{/reg}">
-    <label>账户</label><input type="text" id="username" name="username" required><br/>
-    <label>密码</label><input type="password" name="userpwd" required><br/>
-    <label>确认</label><input type="password" id="userpwd2" required><br/>
+<form method="POST" th:action="@{/me/register}">
+    <label>账户</label><input type="text" id="name" name="name" required><br/>
+    <label>密码</label><input type="password" id="pwd1" name="pwd" required><br/>
+    <label>确认</label><input type="password" id="pwd2" required><br/>
     <input type="submit" value="注册" onclick="regCheck()"/>
 </form>
 <script>
@@ -19,8 +19,8 @@
     };
 
     regCheck = function() {
-        var upwd1 = eg.$("userpwd1");
-        var upwd2 = eg.$("userpwd2");
+        var upwd1 = eg.$("pwd1");
+        var upwd2 = eg.$("pwd2");
         if (upwd2.value != upwd1.value) {
             alert('两次密码输入不相同, 请重新输入');
             return false;

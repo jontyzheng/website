@@ -38,12 +38,10 @@ public class PostController {
     }
     //2021-04-06 404 Bad Request closed
 
-    //
     @GetMapping("/posts/{tag}")
     public String listByTag(@PathVariable String tag, Model model) {
-        System.out.println("经过了这里");
+        //System.out.println("经过了这里");
         System.out.println(tag);
-        //return "result";
         List<Post> tagPosts = postService.listByTag(tag);
         model.addAttribute("tagPosts", tagPosts);
         return "/posts/tag-post";
