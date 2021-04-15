@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <title>添加博客</title>
     <script type="text/javascript" src="../static/js/post-add.js" th:src="@{/js/post-add.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/examples/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/editormd.css}"/>
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
 </head>
 <body>
-    <header th:replace="layout::header"></header>
-
-    <form method="post" th:action="@{/post}">
+    <div id="layout">
+    <form name="mdEditorForm">
         <label>标签: </label>
         <select name="tag">
             <option value="Java">Java</option>
@@ -22,14 +24,47 @@
         <label>标题: </label><input type="text" name="title"><br/>
         <label>描述: </label><input type="text" name="profile"><br/>
         <label>内容: </label>
-        <div id="test-md">
-            <textarea name="body" rows="30" cols="100"></textarea>
+        <div id="test-editormd">
+            <textarea name="body" style="display:none;"></textarea>
         </div>
         <br/>
-        <input type="date" id="date" name="date" hidden>
-        <input type="submit" value="提交" onclick="setDate()">
+<!--        <input type="date" id="date" name="date" hidden>-->
+<!--        <input type="submit" value="提交" onclick="setDate()">-->
     </form>
+    </div>
+    <script th:src="@{/js/examples/jquery.min.js}"></script>
+    <script th:src="@{/js/editormd.min.js}"></script>
+    <script type="text/javascript">
+        var textEditor;
 
-    <footer th:replace="layout::footer"></footer>
+        $(function() {
+            textEditor = editormd("test-editormd", {
+                width: "90%",
+                height: "640",
+                syncScrolling: "single",
+                path: "../lib/",
+                imageUpload: true,
+                imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                //图片上传的请求接口
+                imageUploadURL: "/posts/post/image/upload",
+                toolbarIcons: function() {
+                    return ["undo", "redo", "|", "bold", "quote", "italic", "h1", "h2", "h3", "h4", "h5", "h6", "image",  "code", "link", "code-block", "table", "publish"];
+                    //自定义工具栏图标
+                },
+                //自定义图标下的文字
+                toolbarIconTexts: {
+                    publish: "<span bgcolor='gray'>发布</span>"
+                },
+                toolbarHandlers: {
+                    publish: function (cm, icon, cursor, selection) {
+                        mdEditorForm.method = "post";
+                        mdEditorForm.action = "/posts/post";
+                        // mdEditorForm.onclick = "setDate()";
+                        mdEditorForm.submit();
+                    }
+                }
+            });
+        } )
+    </script>
 </body>
 </html>

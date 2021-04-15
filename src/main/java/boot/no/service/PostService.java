@@ -13,8 +13,9 @@ public class PostService {
     @Autowired
     PostMapper postMapper;
 
-    public void addPost(Post post) {
-        postMapper.addPost(post);
+    public boolean addPost(Post post) {
+        int res = postMapper.addPost(post);
+        return res > 0;
     }
 
     public List<Post> listPost() {
@@ -25,6 +26,9 @@ public class PostService {
         return postMapper.listByTag(tag);
     }
 
+    public Post byTitle(String title){
+        return postMapper.byTitle(title);
+    }
 //    List<Post> findAll() {
 //        return postMapper.findAll();
 //    }

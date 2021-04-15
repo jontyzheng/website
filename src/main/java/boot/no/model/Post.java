@@ -56,7 +56,6 @@ public class Post {
         return date;
     }
 
-    //用工具类
     public void setDate(Date date) {
         this.date = date;
     }

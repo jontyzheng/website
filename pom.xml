@@ -82,6 +82,32 @@
             <artifactId>spring-boot-devtools</artifactId>
             <version>2.4.3</version>
         </dependency>
+        <!-- for editor.md -->
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.75</version>
+        </dependency>
+
+        <!--文件服务器使用: mongodb-->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-mongodb -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-mongodb</artifactId>-->
+<!--            <version>2.4.4</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash;mongo 测试使用&ndash;&gt;-->
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/de.flapdoodle.embed/de.flapdoodle.embed.mongo &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>de.flapdoodle.embed</groupId>-->
+<!--            <artifactId>de.flapdoodle.embed.mongo</artifactId>-->
+<!--            <version>2.2.0</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+
+
 
     </dependencies>
 

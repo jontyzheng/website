@@ -7,14 +7,20 @@
     <header th:replace="layout::site-header"/>
     <h1>index.html</h1>
     <ul>
-        <li><a th:href="@{/posts/Python}">Python</a></li>
-        <li><a th:href="@{/posts/Java}">Java</a></li>
-        <li><a th:href="@{/posts/MySQL}">MySQL</a></li>
-        <li><a th:href="@{/posts/js}">js</a></li>
-        <li><a th:href="@{/posts/css}">css</a></li>
+        <li><a th:href="@{/posts/tag/python}">Python</a></li>
+        <li><a th:href="@{/posts/tag/Java}">Java</a></li>
+        <li><a th:href="@{/posts/tag/MySQL}">MySQL</a></li>
+        <li><a th:href="@{/posts/tag/js}">js</a></li>
+        <li><a th:href="@{/posts/tag/css}">css</a></li>
     </ul>
     <!-- 2021-04-07 14:47:39-->
-
+    <main>
+        <div th:unless="#{lists.isEmpty(posts)}">
+            <article th:each="post:${posts}">
+                <div><a href="@{/posts/title/{title}" th:text="${post.title}"></a></div>
+            </article>
+        </div>
+    </main>
     Now is: <b th:text="${execInfo.now.time}">date and time</b>
     <footer th:replace="layout::site-footer"/>
 </body>

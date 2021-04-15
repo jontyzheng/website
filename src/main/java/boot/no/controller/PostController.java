@@ -2,10 +2,13 @@ package boot.no.controller;
 
 import boot.no.model.Post;
 import boot.no.service.PostService;
+import boot.no.util.FileUtils;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -29,21 +32,52 @@ public class PostController {
         return "posts/post-add";
     }
 
-    @PostMapping("/post")
+    @PostMapping("/posts/post")
     public String addPost(Post post) {
-        System.out.println("经过了这里");
-        System.out.println(post.getDate());
-        postService.addPost(post);
-        return "posts/post-success";
+        //System.out.println(post.getDate());
+        boolean res = postService.addPost(post);
+        if (res) {
+            return "/posts/post-article";
+        }
+        else
+            return "false";
     }
     //2021-04-06 404 Bad Request closed
 
-    @GetMapping("/posts/{tag}")
+    @RequestMapping("/posts/post/image/upload")
+    @ResponseBody
+    public JSONObject imageUpload(@RequestParam("editor-image-file")MultipartFile image) {
+        JSONObject jsonObject = new JSONObject();
+        if (image != null) {
+            String path = FileUtils.uploadFile(image);
+            System.out.println(path);
+            jsonObject.put("url", path);
+            jsonObject.put("success", 1);
+            jsonObject.put("message", "upload success");
+        }
+        else {
+            jsonObject.put("success", 0);
+            jsonObject.put("message", "upload error!");
+
+        }
+        return jsonObject;
+    }
+
+
+    @GetMapping("/posts/tag/{tag}")
     public String listByTag(@PathVariable String tag, Model model) {
         //System.out.println("经过了这里");
         System.out.println(tag);
         List<Post> tagPosts = postService.listByTag(tag);
         model.addAttribute("tagPosts", tagPosts);
         return "/posts/tag-post";
+    }
+
+    @GetMapping("/posts/title/{title}")
+    public String byTitle(Post post, Model model) {
+        String title = post.getTitle();
+        Post article  = postService.byTitle(title);
+        model.addAttribute("post", article);
+        return "/post/post-article";
     }
 }
