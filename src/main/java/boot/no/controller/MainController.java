@@ -24,4 +24,8 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/admin/admin")
+    public String toAdmin() {
+        return "/admin/admin";
+    }
 }

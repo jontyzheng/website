@@ -1,3 +1,19 @@
 body {
-    background-color: antiquewhite;
+    background-color: cornflowerblue;
+}
+
+main {
+    width: 960px;
+    margin: 0 auto;
+}
+
+article {
+    border: 1px solid #ccc;
+    padding: 1em;
+}
+
+.tag li {
+    display: inline-block;
+    width: 60px;
+    border: 1px solid #ccc;
 }
