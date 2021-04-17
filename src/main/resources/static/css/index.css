@@ -1,10 +1,27 @@
-body {
-    background-color: cornflowerblue;
+nav {
+    text-indent: 105px;     /*文本缩进*/
+
+    height: 18px;
+    line-height: 18px;      /*文本垂直居中*/
+}
+
+nav li {
+    display: inline-block;
+    width: 60px;
+    /*border: 1px solid #ccc;*/
+    margin-right: 10px;     /*标签项分隔*/
+    text-align: center;
+}
+
+.main-container {
+    margin: 0 auto;
+    background-color: #f4f5f5;  /*main 外部*/
 }
 
 main {
     width: 960px;
-    margin: 0 auto;
+    margin: 30px auto;          /*main 居中*/
+    background: white;          /*main 背景区分外部*/
 }
 
 article {
@@ -12,8 +29,3 @@ article {
     padding: 1em;
 }
 
-.tag li {
-    display: inline-block;
-    width: 60px;
-    border: 1px solid #ccc;
-}

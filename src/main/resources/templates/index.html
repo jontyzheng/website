@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:insert="layout.html :: headFragment">
+<head>
     <title>index</title>
-    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}"/> <!-- 2021-04-07 17:38:26 index.css 引入-->
 </head>
 <body>
-    <header th:replace="layout::site-header"/>
-    <main>
+    <div th:insert="layout.html :: headFragment"></div> <!--2021-04-07 17:38:40 layout.css 和 index.css 并存的方法: 不在head里面引入片段-->
+
+    <header th:insert="layout::site-header"/>
+
+    <nav>
         <ul class="tag">
             <li><a th:href="@{/posts/tag/python}">Python</a></li>
             <li><a th:href="@{/posts/tag/Java}">Java</a></li>
             <li><a th:href="@{/posts/tag/MySQL}">MySQL</a></li>
             <li><a th:href="@{/posts/tag/js}">js</a></li>
             <li><a th:href="@{/posts/tag/css}">css</a></li>
+            <li><a th:href="@{/posts/tag/other}">others</a></li>
         </ul>
         <!-- 2021-04-07 14:47:39-->
+    </nav>
 
-        <div class="article">
-            <article>
-                <div><a href="#"><h2>title</h2></a></div>
-            </article>
-            <article>
-                <div><a href="#"><h2>title</h2></a></div>
-            </article>
-            <article>
-                <div><a href="#"><h2>title</h2></a></div>
-            </article>
-            <article>
-                <div><a href="#"><h2>title</h2></a></div>
-            </article>
-            <article>
-                <div><a href="#"><h2>title</h2></a></div>
-            </article>
-            <article>
-                <div><a href="#"><h2>title</h2></a></div>
-            </article>
-            <article>
-                <div><a href="#"><h2>title</h2></a></div>
-            </article>
-        </div>
-    </main>
+    <div class="main-container">
+        <main>
+            <div class="article">
+                <article>
+                    <div><a href="#"><h2>title</h2></a></div>
+                </article>
+                <article>
+                    <div><a href="#"><h2>title</h2></a></div>
+                </article>
+                <article>
+                    <div><a href="#"><h2>title</h2></a></div>
+                </article>
+                <article>
+                    <div><a href="#"><h2>title</h2></a></div>
+                </article>
+                <article>
+                    <div><a href="#"><h2>title</h2></a></div>
+                </article>
+                <article>
+                    <div><a href="#"><h2>title</h2></a></div>
+                </article>
+                <article>
+                    <div><a href="#"><h2>title</h2></a></div>
+                </article>
+            </div>
+        </main>
+    </div>
     Now is: <b th:text="${execInfo.now.time}">date and time</b>
     <footer th:replace="layout::site-footer"/>
 </body>
