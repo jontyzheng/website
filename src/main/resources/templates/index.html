@@ -23,7 +23,16 @@
 
     <div class="main-container">
         <main>
-            <div class="article">
+            <div class="article" th:if="${#lists.isEmpty(posts)}">
+                <article>
+                    <div><a href="#"><h2>title</h2></a></div>
+                </article>
+                <article>
+                    <div><a href="#"><h2>title</h2></a></div>
+                </article>
+                <article>
+                    <div><a href="#"><h2>title</h2></a></div>
+                </article>
                 <article>
                     <div><a href="#"><h2>title</h2></a></div>
                 </article>
@@ -47,8 +56,12 @@
                 </article>
             </div>
         </main>
+        <aside>
+            <div class="ad-block">ad-block</div>
+            <div class="user-block">user_block</div>
+        </aside>
     </div>
-    Now is: <b th:text="${execInfo.now.time}">date and time</b>
+
     <footer th:replace="layout::site-footer"/>
 </body>
 </html>

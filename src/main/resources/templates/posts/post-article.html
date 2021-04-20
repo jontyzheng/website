@@ -5,15 +5,19 @@
     <title>文章</title>
     <link rel="stylesheet" th:href="@{/css/examples/style.css}" />
     <link rel="stylesheet" th:href="@{/css/editormd.css}" />
+    <link rel="stylesheet" th:href="@{/css/post-article.css}">
     <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+    <div th:insert="layout::header"></div>
+    <div th:insert="layout::headFragment"></div>
     <div id="layout">
-        <header>
+        <div id="article-head">
             <h1 th:text="${post.title}"></h1>
             <h2 th:text="${post.tag}"></h2>
-        </header>
+        </div>
         <div id="test-editormd">
+            简介:
             <p th:text="${post.profile}"></p>
             <textarea style="display:none;" th:text="${post.body}"></textarea>
         </div>

@@ -10,7 +10,7 @@ public class Post {
     private String profile;
     private String body;
     private String author;    //对应外键
-    private Date date; //对应 db 中 date 类型的字段 date
+    private Date date;        //对应 db 中 date 类型的字段 date
 
     public Long getId() {
         return id;

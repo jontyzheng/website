@@ -34,7 +34,8 @@ public class PostController {
 
     @PostMapping("/posts/post")
     public String addPost(Post post) {
-        //System.out.println(post.getDate());
+        System.out.println(post.getDate());
+        System.out.println(post.getTitle());
         boolean res = postService.addPost(post);
         if (res) {
             return "/posts/post-article";

@@ -3,8 +3,8 @@
 <mapper namespace="boot.no.dao.PostMapper">
 
     <insert id="addPost" parameterType="post">
-            INSERT INTO post(tag, title, profile, body)
-            VALUES (#{tag}, #{title}, #{profile}, #{body})
+            INSERT INTO post(tag, title, profile, body, date)
+            VALUES (#{tag}, #{title}, #{profile}, #{body}, #{date})
     </insert>
 
     <!--查询所有博客-->
@@ -23,4 +23,7 @@
             SELECT tag, title, profile, body FROM post
             WHERE title = #{title}
     </select>
+
+    <!---->
+<!--    <select id="lastest" >-->
 </mapper>

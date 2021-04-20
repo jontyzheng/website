@@ -5,7 +5,7 @@ eg.$ = function (id) {
 }
 
 setDate = function () {
-    alert("已触发 post-add.js");
+    // alert("已触发 post-add.js");
     var dateInput = eg.$("date");
     var dater = new Date();
     //var date = dater.valueOf();

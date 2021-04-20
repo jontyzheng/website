@@ -52,7 +52,7 @@ public class UserController {
         String realPwd = userService.checkUser(account);
         System.out.println(realPwd);
         if (pwd.equals(realPwd))
-            return "redirect:index";
+            return "/admin/login-success";//redirect:
         else {
             return "/me/login";
         }

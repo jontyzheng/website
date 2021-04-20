@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>添加博客</title>
-    <script type="text/javascript" src="../static/js/post-add.js" th:src="@{/js/post-add.js}"></script>
     <link rel="stylesheet" th:href="@{/css/examples/style.css}"/>
     <link rel="stylesheet" th:href="@{/css/editormd.css}"/>
     <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
@@ -18,11 +17,42 @@
             <option value="Python">Python</option>
             <option value="Leet">Leet</option>
             <option value="Git">Git</option>
+            <option value="js">js</option>
+            <option value="css">css</option>
             <option value="others">其它</option>
         </select>
         <br/>
         <label>标题: </label><input type="text" name="title"><br/>
         <label>描述: </label><input type="text" name="profile"><br/>
+<!--        <input type="date" name="date" style="display: none;">-->
+        <span id="currentdate" onload="showdate()"/>time</span>
+        <input id="date" name="date" onload="setdate()" hidden/>
+        <!-- date 显示和插入脚本 2021-04-07 16:06:15 -->
+        <br>
+        <script>
+            var eg = {}
+
+            eg.$ = function (id) {
+                return document.getElementById(id);
+            }
+
+            function setdate() {
+                var dater = new Date();
+                var date = dater.toISOString().substring(0, 10);
+                eg.$("date").value = date;
+            }
+            setdate();
+
+            function showdate() {
+                var dater = new Date();
+                var date = dater.toISOString().substring(0, 10);
+                eg.$("currentdate").innerHTML = date;
+            }
+
+            showdate();
+        </script>
+
+<!--        value="2020-02-02"-->
         <label>内容: </label>
         <div id="test-editormd">
             <textarea name="body" style="display:none;"></textarea>
@@ -34,10 +64,13 @@
     </div>
     <script th:src="@{/js/examples/jquery.min.js}"></script>
     <script th:src="@{/js/editormd.min.js}"></script>
+    <!--时间 js-->
+    <script th:src="@{/js/post-date.js}" src="../static/js/post-date.js" ></script>
     <script type="text/javascript">
         var textEditor;
 
         $(function() {
+
             textEditor = editormd("test-editormd", {
                 width: "90%",
                 height: "640",
@@ -59,12 +92,12 @@
                     publish: function (cm, icon, cursor, selection) {
                         mdEditorForm.method = "post";
                         mdEditorForm.action = "/posts/post";
-                        // mdEditorForm.onclick = "setDate()";
                         mdEditorForm.submit();
                     }
                 }
             });
-        } )
+        })
+
     </script>
 </body>
 </html>
