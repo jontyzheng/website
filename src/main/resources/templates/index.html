@@ -8,52 +8,24 @@
     <div th:insert="layout.html :: headFragment"></div> <!--2021-04-07 17:38:40 layout.css 和 index.css 并存的方法: 不在head里面引入片段-->
 
     <header th:insert="layout::site-header"/>
-
-    <nav>
-        <ul class="tag">
-            <li><a th:href="@{/posts/tag/python}">Python</a></li>
-            <li><a th:href="@{/posts/tag/Java}">Java</a></li>
-            <li><a th:href="@{/posts/tag/MySQL}">MySQL</a></li>
-            <li><a th:href="@{/posts/tag/js}">js</a></li>
-            <li><a th:href="@{/posts/tag/css}">css</a></li>
-            <li><a th:href="@{/posts/tag/other}">others</a></li>
-        </ul>
-        <!-- 2021-04-07 14:47:39-->
-    </nav>
+    <nav th:insert="layout::site-nav"/>
 
     <div class="main-container">
         <main>
-            <div class="article" th:if="${#lists.isEmpty(posts)}">
-                <article>
-                    <div><a href="#"><h2>title</h2></a></div>
-                </article>
-                <article>
-                    <div><a href="#"><h2>title</h2></a></div>
-                </article>
-                <article>
-                    <div><a href="#"><h2>title</h2></a></div>
-                </article>
-                <article>
-                    <div><a href="#"><h2>title</h2></a></div>
-                </article>
-                <article>
-                    <div><a href="#"><h2>title</h2></a></div>
-                </article>
-                <article>
-                    <div><a href="#"><h2>title</h2></a></div>
-                </article>
-                <article>
-                    <div><a href="#"><h2>title</h2></a></div>
-                </article>
-                <article>
-                    <div><a href="#"><h2>title</h2></a></div>
-                </article>
-                <article>
-                    <div><a href="#"><h2>title</h2></a></div>
-                </article>
-                <article>
-                    <div><a href="#"><h2>title</h2></a></div>
-                </article>
+            <div class="sub-nav">
+                <a href="#">最新</a>
+            </div>
+            <div th:unless="${ #lists.isEmpty(lastest) }">
+                <div th:each="post: ${lastest}">
+                    <article>
+                        <span th:if="${post.date}" th:text="${post.date}">发布日期</span><br/>
+                        <a th:if="${post.title}" th:text="${post.title}"  th:href="@{'/postId/' + ${post.id} }">发布标题</a>
+                        <!--看到的是 post.title, 点击传递的是 post.id 触发的是 /posts/id/xx-->
+                    </article>
+                </div>
+            </div>
+            <div th:if="${#lists.isEmpty(lastest)}">
+                <p>未发布任何文章</p>
             </div>
         </main>
         <aside>

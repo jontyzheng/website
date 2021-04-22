@@ -66,18 +66,22 @@ public class PostController {
 
 
     @GetMapping("/posts/tag/{tag}")
-    public String listByTag(@PathVariable String tag, Model model) {
-        //System.out.println("经过了这里");
+    public String byTag(@PathVariable String tag, Model model) {
+        System.out.println("经过了这里");
         System.out.println(tag);
-        List<Post> tagPosts = postService.listByTag(tag);
+        List<Post> tagPosts = postService.byTag(tag);
         model.addAttribute("tagPosts", tagPosts);
+        System.out.println("执行完 byTag 查询");
         return "/posts/tag-post";
     }
 
-    @GetMapping("/posts/title/{title}")
+    @GetMapping("/posts/postId/{id}")
     public String byTitle(Post post, Model model) {
         String title = post.getTitle();
-        Post article  = postService.byTitle(title);
+        Long postId = post.getId();
+        System.out.println(postId);
+        System.out.println(title);
+        Post article  = postService.byPostId(postId);
         model.addAttribute("post", article);
         return "/post/post-article";
     }

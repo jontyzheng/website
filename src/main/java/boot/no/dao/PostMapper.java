@@ -8,10 +8,10 @@ public interface PostMapper {
 
     int addPost(Post post);
     List<Post> listPost();
-    List<Post> listByTag(String tag);
+    List<Post> byTag(String tag);
     //按照超链接点进去的实际上按照标题查找全文
-    Post byTitle(String title);
-    //List<Post> findLatest();
+    Post byPostId(Long postId);
+    List<Post> lastest();
     //Post findById(Long id);
 //    Post edit(Post post);
 //    void deleteById(Long id);

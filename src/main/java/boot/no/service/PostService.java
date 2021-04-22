@@ -18,16 +18,20 @@ public class PostService {
         return res > 0;
     }
 
+    public List<Post> byTag(String tag) {
+        return postMapper.byTag(tag);
+    }
+
     public List<Post> listPost() {
         return postMapper.listPost();
     }
 
-    public List<Post> listByTag(String tag) {
-        return postMapper.listByTag(tag);
+    public List<Post> lastest() {
+        return postMapper.lastest();
     }
 
-    public Post byTitle(String title){
-        return postMapper.byTitle(title);
+    public Post byPostId(Long postId){
+        return postMapper.byPostId(postId);
     }
 //    List<Post> findAll() {
 //        return postMapper.findAll();

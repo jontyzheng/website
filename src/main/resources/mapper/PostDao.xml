@@ -13,17 +13,21 @@
     </select>
 
     <!--按 tag 分类-->
-    <select id="listByTag" resultType="post" parameterType="String">
+    <select id="byTag" resultType="post" parameterType="String">
             SELECT tag, profile, body, date FROM post
             WHERE tag = #{tag}
     </select>
 
-    <!--按标题展示-->
-    <select id="byTitle" resultType="post" parameterType="string">
-            SELECT tag, title, profile, body FROM post
-            WHERE title = #{title}
+    <!--首页显示-->
+    <select id="lastest" resultType="post">
+            SELECT title, date, id
+            From post
+            Limit 10
     </select>
 
-    <!---->
-<!--    <select id="lastest" >-->
+    <!--按标题展示-->
+    <select id="byPostId" resultType="post" parameterType="long">
+            SELECT * FROM post
+            WHERE id = #{id}
+    </select>
 </mapper>

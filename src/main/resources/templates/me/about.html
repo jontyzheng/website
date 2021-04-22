@@ -3,26 +3,28 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>个人设置</title>
+    <link rel="stylesheet" th:href="@{/css/me/about.css}"/>
+    <title>关于作者</title>
 </head>
 <body>
-<div class="testt testtt">123213123123123</div>
-        profile.html
-        <h1>
-            信息展示
-        </h1>
-        <img th:src="${(user.avatar!=null)?user.avatar:'/img/avatar-default.jpg'}" name="avatar" alt="暂无图片" width="50px" height="50px">
-        <br/>
-        <dt>昵称</dt>
-        <dd th:text="${user.name}" id="name">略</dd>
-        <br>
-        <dt>邮箱</dt>
-        <dd th:text="${user.email}" id="email" name="email">略</dd>
-        <br>
-        <br>
-        <dt>微信号</dt>
-        <dd th:text="${user.wechatId}" id="wechatId">略</dd>
-        <br>
-    </div>
+        <div th:insert="layout::head"></div>
+        <div th:insert="layout::header"></div>
+        <main>
+            <h1>
+                信息展示
+            </h1>
+            <img th:src="${(user.avatar!=null)?user.avatar:'/img/avatar-default.jpg'}" name="avatar" alt="暂无图片" width="50px" height="50px">
+            <br/>
+            <dt>昵称</dt>
+            <dd th:text="${user.name}" id="name">略</dd>
+            <br>
+            <dt>邮箱</dt>
+            <dd th:text="${user.email}" id="email" name="email">略</dd>
+            <br>
+            <br>
+            <dt>微信号</dt>
+            <dd th:text="${user.wechatId}" id="wechatId">略</dd>
+            <br>
+        </main>
 </body>
 </html>
