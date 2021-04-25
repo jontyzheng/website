@@ -11,6 +11,7 @@
 <body>
     <div th:insert="layout::header"></div>
     <div th:insert="layout::headFragment"></div>
+    <main>
     <div id="layout">
         <div id="article-head">
             <h1 th:text="${post.title}"></h1>
@@ -22,6 +23,7 @@
             <textarea style="display:none;" th:text="${post.body}"></textarea>
         </div>
     </div>
+    </main>
 
     <script th:src="@{/js/examples/jquery.min.js}"></script>
     <script th:src="@{/lib/marked.min.js}"></script>

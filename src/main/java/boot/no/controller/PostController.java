@@ -23,7 +23,7 @@ public class PostController {
         //向 posts/index 页中添加一个 post 列表对象
         List<Post> posts = postService.listPost();
         model.addAttribute("posts", posts);
-        return "/posts/index";
+        return "/posts/post-all";
     }
 
     @RequestMapping("/posts/post")
@@ -67,11 +67,18 @@ public class PostController {
 
     @GetMapping("/posts/tag/{tag}")
     public String byTag(@PathVariable String tag, Model model) {
-        System.out.println("经过了这里");
         System.out.println(tag);
+        //输出 null 区间锁定参数未获取
+        //添加@PathVariable 输出 Python, Python 正是首页触发的标签
         List<Post> tagPosts = postService.byTag(tag);
         model.addAttribute("tagPosts", tagPosts);
         System.out.println("执行完 byTag 查询");
+        System.out.println(tagPosts.isEmpty());
+        //输出 true 区间锁定到 sql 语句执行部分
+        //sql调试, 无误
+        //输出 false sql 执行完毕, 区间锁定到显示部分
+        //System.out.println(tagPosts.get(0).getTitle());
+        //输出 Java, 而是 Java 正是第一篇文章的标题
         return "/posts/tag-post";
     }
 
@@ -83,6 +90,6 @@ public class PostController {
         System.out.println(title);
         Post article  = postService.byPostId(postId);
         model.addAttribute("post", article);
-        return "/post/post-article";
+        return "/posts/post-article";
     }
 }

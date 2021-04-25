@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>标签文章</title>
-    <link rel="stylesheet" th:href="@{/css/tag-posts.css}"/>
+    <title>index post</title>
+    <link rel="stylesheet" th:href="@{/css/all-post.css}"/>
 </head>
 <body>
     <div th:insert="layout::headFragment"></div>
     <header th:insert="layout::header"></header>
-
     <div class="main-container">
         <main>
-            <div th:unless="${ #lists.isEmpty(tagPosts) }">
-                <div th:each="post: ${tagPosts}">
+            <div th:unless="${ #lists.isEmpty(posts) }">
+                <div th:each="post: ${posts}">
                     <article>
                         <span th:if="${post.date}" th:text="${post.date}">发布日期</span><br/>
                         <a th:if="${post.title}" th:text="${post.title}"  th:href="@{'/posts/postId/' + ${post.id} }">发布标题</a>
@@ -20,8 +20,8 @@
                     </article>
                 </div>
             </div>
-            <div th:if="${#lists.isEmpty(tagPosts)}">
-                <p>当前标签下未发布任何文章</p>
+            <div th:if="${#lists.isEmpty(posts)}">
+                <p>当前网站未发布任何文章</p>
             </div>
         </main>
     </div>

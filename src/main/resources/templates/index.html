@@ -9,18 +9,17 @@
 
     <header th:insert="layout::site-header"/>
     <nav th:insert="layout::site-nav"/>
-
     <div class="main-container">
         <main>
             <div class="sub-nav">
-                <a href="#">最新</a>
+                <a th:href="@{/}">最新</a>
             </div>
             <div th:unless="${ #lists.isEmpty(lastest) }">
                 <div th:each="post: ${lastest}">
                     <article>
                         <span th:if="${post.date}" th:text="${post.date}">发布日期</span><br/>
-                        <a th:if="${post.title}" th:text="${post.title}"  th:href="@{'/postId/' + ${post.id} }">发布标题</a>
-                        <!--看到的是 post.title, 点击传递的是 post.id 触发的是 /posts/id/xx-->
+                        <a th:if="${post.title}" th:text="${post.title}"  th:href="@{'/posts/postId/' + ${post.id} }">发布标题</a>
+                        <!--显示是 post.title, 点击传递的值是 post.id 触发的是 /posts/id/xx-->
                     </article>
                 </div>
             </div>

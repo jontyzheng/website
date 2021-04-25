@@ -17,11 +17,11 @@ nav>a:first-child {
 .main-container {
     width: 1020px;
     margin: 10px auto;             /*main-container 居中*/
-    background-color: #f4f5f5;      /*main 外部*/
+          /*main 外部*/
 }
 
 main {
-    width: 740px;
+    width: 700px;
     float: left;
     background: white;          /*main 背景区分外部*/
 }
