@@ -45,16 +45,17 @@
                 <input placeholder="姓名" name="author" id="author" required/><br/>
                 <input placeholder="邮箱" name="email" id="email" type="email" required/><br/>
                 <!-- 传送 postId 进去-->
-                <span id="postId" name="postId" th:text="${post.id}" style="display: none;"></span><br/>
-                <input type="submit" value="发布" onclick="addComment()">
+                <input id="postId" name="postId" th:value="${post.id}" hidden></input><br/>
+<!--                <input type="submit" value="发布" onclick="addComment()">-->
             </form>
+            <button onclick="addComment()">发布</button>
         </div>
         </div>
     </div>
     </main>
 
-    <script th:src="@{/js/comment-add.js}" src="../static/js/comment-add.js" ></script>
     <script th:src="@{/js/examples/jquery.min.js}"></script>
+    <script th:src="@{/js/comment-add.js}" src="../static/js/comment-add.js" ></script>
     <script th:src="@{/lib/marked.min.js}"></script>
     <script th:src="@{/lib/prettify.min.js}"></script>
     <script th:src="@{/lib/raphael.min.js}"></script>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CommentController {
@@ -14,6 +15,7 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    @ResponseBody
     @PostMapping("comment")
     public String comment(Comment comment) {
 //        System.out.println(comment.getAuthor());
@@ -24,6 +26,6 @@ public class CommentController {
             System.out.println("评论添加成功");
         else
             System.out.println("添加有误");
-        return "index";
+        return "插入成功";
     }
 }
