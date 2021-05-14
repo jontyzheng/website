@@ -26,9 +26,28 @@
             Limit 10
     </select>
 
-    <!--按标题展示-->
-    <select id="byPostId" resultType="post" parameterType="long">
-            SELECT * FROM post
-            WHERE id = #{id}
+    <!--按标题展示
+    左连接查询-->
+    <select id="byPostId" parameterType="Long" resultMap="PostWithCommentResult">
+            select p.*, c.author, c.content
+            from post p
+            left join comment c
+            on p.id = c.postId
+            where p.id = #{id}
     </select>
+
+    <resultMap type="Post" id="PostWithCommentResult">
+        <id property="id" column="id"/>
+        <result property="tag" column="tag"/>
+        <result property="title" column="title"/>
+        <result property="profile" column="profile"/>
+        <result property="body" column="body"/>
+        <result property="date" column="date"/>
+        <collection property="comments" ofType="Comment">
+            <id property="commentId" column="commentId"/>
+            <result property="author" column="author"/>
+            <result property="content" column="content"/>
+            <result property="email" column="email"/>
+        </collection>
+    </resultMap>
 </mapper>

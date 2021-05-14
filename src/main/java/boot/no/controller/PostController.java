@@ -85,8 +85,9 @@ public class PostController {
     @GetMapping("/posts/postId")
     public String byTitle(@RequestParam("id") Long id, Post post, Model model) {
         Long postId = post.getId();
-        System.out.println(postId);
+        System.out.println("postId: " + postId);
         Post article  = postService.byPostId(postId);
+        System.out.println("评论: " + article.getComments());
         model.addAttribute("post", article);
         return "/posts/post-article";
     }

@@ -10,8 +10,7 @@ public class Post {
     private String title;
     private String profile;
     private String body;
-    private String author;    //对应外键
-    private Date date;        //对应 db 中 date 类型的字段 date
+    private Date date;              //对应 db 中 date 类型的字段 date
     private List<Comment> comments; //增加一个List<Commetn>表示文章下的多条评论
 
     public Long getId() {
@@ -44,14 +43,6 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public Date getDate() {
