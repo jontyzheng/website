@@ -42,7 +42,7 @@
             <!--评论表单 -->
             <form id="commentForm" action="">
             <textarea placeholder="请输入评论信息..." rows="4" cols="100" name="content" id="content" required></textarea><br>
-                <input placeholder="姓名" name="author" id="author" required/><br/>
+                <input placeholder="ID" name="author" id="author" required/><br/>
                 <input placeholder="邮箱" name="email" id="email" type="email" required/><br/>
                 <!-- 传送 postId 进去-->
                 <input id="postId" name="postId" th:value="${post.id}" hidden></input><br/>

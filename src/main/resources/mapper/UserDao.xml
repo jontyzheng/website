@@ -19,7 +19,7 @@
 
     <!--展示信息-->
     <select id="showAbout" resultType="user">
-        SELECT name, email, wechat_id FROM user
+        SELECT name, email, wechat_id, intro FROM user
         WHERE id = 1
     </select>
 

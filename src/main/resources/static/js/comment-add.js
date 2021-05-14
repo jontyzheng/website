@@ -15,6 +15,11 @@ addComment = function() {
     console.log("postId 为 " + postId);
     //var data = $('#commentForm').serialize()+"&postId="+$('#postId').text();
 
+    if (!author ||  !commentContent ||  !email ) {
+        alert("评论信息输入不完整, 请重新填写呢亲");
+        return false;
+    }
+
     $.ajax({
         url: '/comment',
         type: 'POST',
