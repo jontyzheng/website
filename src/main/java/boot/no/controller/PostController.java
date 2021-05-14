@@ -82,12 +82,10 @@ public class PostController {
         return "/posts/tag-post";
     }
 
-    @GetMapping("/posts/postId/{id}")
-    public String byTitle(Post post, Model model) {
-        String title = post.getTitle();
+    @GetMapping("/posts/postId")
+    public String byTitle(@RequestParam("id") Long id, Post post, Model model) {
         Long postId = post.getId();
         System.out.println(postId);
-        System.out.println(title);
         Post article  = postService.byPostId(postId);
         model.addAttribute("post", article);
         return "/posts/post-article";

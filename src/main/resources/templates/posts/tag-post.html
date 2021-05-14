@@ -15,7 +15,7 @@
                 <div th:each="post: ${tagPosts}">
                     <article>
                         <span th:if="${post.date}" th:text="${post.date}">发布日期</span><br/>
-                        <a th:if="${post.title}" th:text="${post.title}"  th:href="@{'/posts/postId/' + ${post.id} }">发布标题</a>
+                        <a th:if="${post.title}" th:text="${post.title}"  th:href="@{'/posts/postId?id='+${post.id} }">发布标题</a>
                         <!--显示是 post.title, 点击传递的值是 post.id 触发的是 /posts/id/xx-->
                     </article>
                 </div>

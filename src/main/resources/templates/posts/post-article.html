@@ -22,9 +22,33 @@
             <p th:text="${post.profile}"></p>
             <textarea style="display:none;" th:text="${post.body}"></textarea>
         </div>
+        <div id="article-comment">
+            <h2>评论</h2>
+            <div th:unless="${#lists.isEmpty(comments)}">
+                <div th:each="comment:${comments}">
+                    <b><span th:text="${comment.author}"></span></b>
+                    <span th:text="${comment.date}"></span>
+                    <br>
+                    <p th:text="${comment.content}"></p>
+                </div>
+            </div>
+        </div>
+        <div id="add-comment">
+            <!--评论表单 -->
+            <form id="commentForm" action="">
+            <textarea placeholder="请输入评论信息..." rows="4" cols="10" name="content" id="content" required></textarea><br>
+                <input placeholder="姓名" name="author" id="author" required/><br/>
+                <input placeholder="邮箱" name="email" id="email" type="email" required/><br/>
+                <!-- 传送 postId 进去-->
+                <span id="postId" name="postId" th:text="${post.id}"></span><br/>
+                <input type="submit" value="发布" onclick="addComment()">
+            </form>
+        </div>
+        </div>
     </div>
     </main>
 
+    <script th:src="@{/js/comment-add.js}" src="../static/js/comment-add.js" ></script>
     <script th:src="@{/js/examples/jquery.min.js}"></script>
     <script th:src="@{/lib/marked.min.js}"></script>
     <script th:src="@{/lib/prettify.min.js}"></script>

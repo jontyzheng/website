@@ -1,6 +1,7 @@
 package boot.no.model;
 
 import java.sql.Date;
+import java.util.List;
 //修改数据类型!
 
 public class Post {
@@ -11,6 +12,7 @@ public class Post {
     private String body;
     private String author;    //对应外键
     private Date date;        //对应 db 中 date 类型的字段 date
+    private List<Comment> comments; //增加一个List<Commetn>表示文章下的多条评论
 
     public Long getId() {
         return id;
@@ -66,5 +68,13 @@ public class Post {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
