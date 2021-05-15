@@ -30,8 +30,9 @@
                 <td th:text="${article.profile}">55577855</td>
                 <td th:text="${article.body}" id="article-body">Bill Gates</td>
                 <td th:text="${article.date}">55577854</td>
-                <td><a href="#">修改</a></td>
-                <td><a href="#">删除</a></td>
+                <td><a href="#">修改文章</a></td>
+                <span th:value="${article.id}"></span>
+                <td><a th:href="@{'/posts/delete?id=' + ${article.id}}">删除文章</a></td>
             </tr>
         </table>
     </div>

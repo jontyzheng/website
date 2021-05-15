@@ -33,6 +33,11 @@ public class PostService {
     public Post byPostId(Long postId){
         return postDao.byPostId(postId);
     }
+
+    public int deleteById(Long id) {
+        return postDao.deleteById(id);
+    }
+
 //    List<Post> findAll() {
 //        return postMapper.findAll();
 //    }

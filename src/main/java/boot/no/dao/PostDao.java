@@ -12,7 +12,8 @@ public interface PostDao {
     //按照超链接点进去的实际上按照标题查找全文
     Post byPostId(Long postId);
     List<Post> lastest();
+    int deleteById(Long id);
     //Post findById(Long id);
 //    Post edit(Post post);
-//    void deleteById(Long id);
+
 }

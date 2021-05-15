@@ -91,4 +91,19 @@ public class PostController {
         model.addAttribute("post", article);
         return "/posts/post-article";
     }
+
+    @GetMapping("/posts/delete")
+    public String delete(@RequestParam("id") Long id, Post post, Model model) {
+
+        System.out.println("id: " + id);
+        int res = postService.deleteById(id);
+        if (res != 0) {
+            System.out.println("文章已删除");
+            return "/admin/done";
+        }
+        else {
+            System.out.println("文章删除有误");
+            return "/admin/false";
+        }
+    }
 }

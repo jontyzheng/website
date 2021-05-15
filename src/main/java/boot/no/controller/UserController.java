@@ -55,6 +55,7 @@ public class UserController {
         System.out.println("u: " + u);
 
         if (user != null) {
+            //添加 session
             session.setAttribute("USER_SESSION", user);
             return "/admin/admin-index";
         }
