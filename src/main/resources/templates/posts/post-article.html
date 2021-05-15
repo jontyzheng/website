@@ -29,8 +29,11 @@
             <h2>评论</h2>
             <div th:if="${ !#lists.isEmpty(post.comments)}">
                 <div th:each="comment:${post.comments}">
-                    <b><span th:text="${comment.author}"></span></b> :
-                    <span th:text="${comment.content}"></span>
+                    <!--update: 只显示 status 字段等于 1 (已审核) 的评论-->
+                    <div th:if="${comment.status} eq 1">
+                        <b><span th:text="${comment.author}"></span></b> :
+                        <span th:text="${comment.content}"></span>
+                    </div>
                 </div>
             </div>
         </div>

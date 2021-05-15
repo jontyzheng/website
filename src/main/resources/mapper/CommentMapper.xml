@@ -6,5 +6,19 @@
             values (#{content}, #{author}, #{email}, #{postId})
     </insert>
 
+    <select id="listComment" resultType="Comment">
+            select *
+            from comment
+    </select>
 
+    <update id="updateStatus" parameterType="Integer">
+        update comment
+        set status = 1
+        where commentId = #{commentId}
+    </update>
+
+    <delete id="deleteComment" parameterType="Integer">
+        delete from comment
+        where commentId = #{commentId}
+    </delete>
 </mapper>

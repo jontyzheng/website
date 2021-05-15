@@ -5,6 +5,7 @@ public class Comment {
     private String content;
     private String author;
     private String email;
+    private int status;
     private Long postId;
 
     public int getCommentId() {
@@ -39,6 +40,14 @@ public class Comment {
         this.email = email;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public Long getPostId() {
         return postId;
     }
@@ -54,6 +63,7 @@ public class Comment {
                 ", content='" + content + '\'' +
                 ", author='" + author + '\'' +
                 ", email='" + email + '\'' +
+                ", status=" + status +
                 ", postId=" + postId +
                 '}';
     }

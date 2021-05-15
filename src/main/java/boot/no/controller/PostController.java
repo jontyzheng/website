@@ -32,6 +32,7 @@ public class PostController {
         return "posts/post-add";
     }
 
+    //发布文章
     @PostMapping("/posts/post")
     public String addPost(Post post) {
         System.out.println(post.getDate());
@@ -82,6 +83,7 @@ public class PostController {
         return "/posts/tag-post";
     }
 
+    //访问文章
     @GetMapping("/posts/postId")
     public String byTitle(@RequestParam("id") Long id, Post post, Model model) {
         Long postId = post.getId();
@@ -90,44 +92,5 @@ public class PostController {
         System.out.println("评论: " + article.getComments());
         model.addAttribute("post", article);
         return "/posts/post-article";
-    }
-
-    @GetMapping("/posts/delete")
-    public String delete(@RequestParam("id") Long id, Post post, Model model) {
-
-        System.out.println("id: " + id);
-        int res = postService.deleteById(id);
-        if (res != 0) {
-            System.out.println("文章已删除");
-            return "/admin/done";
-        }
-        else {
-            System.out.println("文章删除有误");
-            return "/admin/false";
-        }
-    }
-
-    //访问更新
-    @GetMapping("/posts/update")
-    public String update(@RequestParam("id") Long id, Model model) {
-        Post article = postService.byPostId(id);
-        model.addAttribute("article", article);
-        System.out.println("更新前 id" + article.getId());
-        return "/posts/post-update";
-    }
-
-    //提交更新
-    @PostMapping("/posts/update")
-    public String update(Post post, Model model) {
-        System.out.println("更新文章: " + post.getId());
-        int res = postService.updateById(post);
-        if (res != 0) {
-            System.out.println("更新成功");
-            return "/admin/done";
-        }
-        else {
-            System.out.println("更新操作有误");
-            return "admin/false";
-        }
     }
 }

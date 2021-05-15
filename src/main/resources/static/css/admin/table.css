@@ -1,5 +1,7 @@
 table {
     width: 100%;
+    border-collapse: collapse;
+    border: #8da6ce;
 }
 
 table tr, table td {

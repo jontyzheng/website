@@ -13,7 +13,7 @@ public interface PostDao {
     Post byPostId(Long postId);
     List<Post> lastest();
     int deleteById(Long id);
-    int updateById(Post post);
+    int updatePost(Post post);
 //    Post edit(Post post);
 
 }

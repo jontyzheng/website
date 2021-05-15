@@ -38,8 +38,8 @@ public class PostService {
         return postDao.deleteById(id);
     }
 
-    public int updateById(Post post) {
-        return postDao.updateById(post);
+    public int updatePost(Post post) {
+        return postDao.updatePost(post);
     }
 //    List<Post> findAll() {
 //        return postMapper.findAll();
