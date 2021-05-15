@@ -24,6 +24,6 @@ public class AdminController {
     public String manage(Model model) {
         List<Post> articles = postService.listPost();
         model.addAttribute("articles", articles);
-        return "/admin/post-manage";
+        return "/admin/manage";
     }
 }

@@ -5,10 +5,10 @@
     <title>管理员主页</title>
 </head>
 <body>
-当前用户为:
+当前用户 id:
 <span th:text="${session.USER_SESSION.email}"></span><br/>
 <a href="posts/edit.html" th:href="@{/admin/edit}">信息更新</a>
 <a href="posts/post-add.html" th:href="@{/posts/post}">发布博客</a>
-<a href="posts/post-manage.html" th:href="@{/admin/manage}">管理博客</a>
+<a href="posts/manage.html" th:href="@{/admin/manage}">管理博客</a>
 </body>
 </html>
