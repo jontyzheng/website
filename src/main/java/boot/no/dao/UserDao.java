@@ -2,11 +2,11 @@ package boot.no.dao;
 
 import boot.no.model.User;
 
-public interface UserMapper {
+public interface UserDao {
 
     void addUser(User user);
 
-    String checkUser(String pwd);
+    User findUser(String email, String pwd);
 
     User showAbout();
 

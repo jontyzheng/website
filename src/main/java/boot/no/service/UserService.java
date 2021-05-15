@@ -1,7 +1,7 @@
 package boot.no.service;
 
 
-import boot.no.dao.UserMapper;
+import boot.no.dao.UserDao;
 import boot.no.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,21 +10,21 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    UserMapper userMapper;
+    UserDao userDao;
 
     public void addUser(User user) {
-        userMapper.addUser(user);
+        userDao.addUser(user);
     }
 
-    public String checkUser(String pwd) {
-        return userMapper.checkUser(pwd);
+    public User findUser(String email, String pwd) {
+        return userDao.findUser(email, pwd);
     }
 
     public User showAbout() {
-        return userMapper.showAbout();
+        return userDao.showAbout();
     }
 
     public void updateAbout(User user) {
-        userMapper.updateAbout(user);
+        userDao.updateAbout(user);
     }
 }

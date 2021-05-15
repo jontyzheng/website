@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客管理</title>
+</head>
+
+<body>
+<h1>博客管理</h1>
+<div th:if="${!#lists.isEmpty(articles)}">
+    <table border="1px">
+        <tr>
+            <th>postId</th>
+            <th>标签</th>
+            <th>标题</th>
+            <th>简介</th>
+            <th>内容</th>
+            <th>日期</th>
+            <th>是否更新</th>
+            <th>是否删除</th>
+        </tr>
+        <tr th:each="article:${articles}">
+            <td th:text="${article.id}">Bill Gates</td>
+            <td th:text="${article.tag}">Bill Gates</td>
+            <td th:text="${article.title}">55577854</td>
+            <td th:text="${article.profile}">55577855</td>
+            <td th:text="${article.body}">Bill Gates</td>
+            <td th:text="${article.date}">55577854</td>
+            <td><a href="#">修改</a></td>
+            <td><a href="#">删除</a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
+

@@ -4,7 +4,7 @@ import boot.no.model.Post;
 
 import java.util.List;
 
-public interface PostMapper {
+public interface PostDao {
 
     int addPost(Post post);
     List<Post> listPost();

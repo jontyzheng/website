@@ -1,6 +1,6 @@
 package boot.no.service;
 
-import boot.no.dao.CommentMapper;
+import boot.no.dao.CommentDao;
 import boot.no.model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class CommentService {
     @Autowired
-    CommentMapper commentMapper;
+    CommentDao commentDao;
 
     public int addComment(Comment comment) {
-        return commentMapper.addComment(comment);
+        return commentDao.addComment(comment);
     }
 
 }

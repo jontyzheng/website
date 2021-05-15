@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员主页</title>
+</head>
+<body>
+当前用户为:
+<span th:text="${session.USER_SESSION.email}"></span><br/>
+<a href="posts/edit.html" th:href="@{/admin/edit}">信息更新</a>
+<a href="posts/post-add.html" th:href="@{/posts/post}">发布博客</a>
+<a href="posts/post-manage.html" th:href="@{/admin/manage}">管理博客</a>
+</body>
+</html>

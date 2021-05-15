@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="boot.no.dao.UserMapper">
+<mapper namespace="boot.no.dao.UserDao">
 
     <!--注册-->
     <insert id="addUser" parameterType="user">
@@ -12,9 +12,11 @@
     <!--完善信息-->
 
     <!--登录-->
-    <select id="checkUser" parameterType="String" resultType="String">
-            SELECT pwd FROM user
-            WHERE name = #{name}
+    <select id="findUser" parameterType="String" resultType="User">
+            SELECT *
+            from user
+            WHERE email = #{email}
+            and pwd = #{pwd}
     </select>
 
     <!--展示信息-->

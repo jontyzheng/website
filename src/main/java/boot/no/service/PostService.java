@@ -1,6 +1,6 @@
 package boot.no.service;
 
-import boot.no.dao.PostMapper;
+import boot.no.dao.PostDao;
 import boot.no.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,27 +11,27 @@ import java.util.List;
 public class PostService {
 
     @Autowired
-    PostMapper postMapper;
+    PostDao postDao;
 
     public boolean addPost(Post post) {
-        int res = postMapper.addPost(post);
+        int res = postDao.addPost(post);
         return res > 0;
     }
 
     public List<Post> byTag(String tag) {
-        return postMapper.byTag(tag);
+        return postDao.byTag(tag);
     }
 
     public List<Post> listPost() {
-        return postMapper.listPost();
+        return postDao.listPost();
     }
 
     public List<Post> lastest() {
-        return postMapper.lastest();
+        return postDao.lastest();
     }
 
     public Post byPostId(Long postId){
-        return postMapper.byPostId(postId);
+        return postDao.byPostId(postId);
     }
 //    List<Post> findAll() {
 //        return postMapper.findAll();

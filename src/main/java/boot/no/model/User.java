@@ -64,4 +64,17 @@ public class User {
     public void setIntro(String intro) {
         this.intro = intro;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", email='" + email + '\'' +
+                ", wechatId='" + wechatId + '\'' +
+                ", intro='" + intro + '\'' +
+                '}';
+    }
 }

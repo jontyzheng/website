@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * 功能: 用户控制器
  * /user/reg        跳转注册
@@ -21,59 +23,66 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/me")
-    public String toUser() {
-        return "/me/profile";
-    }
-
-    @RequestMapping("/me/register")
+    //访问注册
+    @RequestMapping("/admin/register")
     public String toReg(Model model) {
         //向 register.html 页面添加一个 user 对象
         model.addAttribute(new User());
-        return "/me/register";
+        return "/admin/register";
     }
 
-    @RequestMapping("/me/login")
+    //访问登录
+    @RequestMapping("/admin/login")
     public String toLogin(Model model) {
         model.addAttribute(new User());
-        return "/me/login";
+        return "/admin/admin-login";
     }
 
-    @PostMapping("/me/register")
+    //注册操作
+    @PostMapping("/admin/register")
     public String addUser(@ModelAttribute User user) {
         userService.addUser(user);
         return "result";
     }
 
-    @PostMapping("/me/login")
-    public String checkUser(@ModelAttribute User user) {
-        String account = user.getName();
-        String pwd = user.getPwd();
-        String realPwd = userService.checkUser(account);
-        System.out.println(realPwd);
-        if (pwd.equals(realPwd))
-            return "/admin/login-success";//redirect:
+    //登录操作
+    @PostMapping("/admin/login")
+    public String login(User u, Model model, HttpSession session) {
+        String email = u.getEmail();
+        String pwd = u.getPwd();
+        System.out.println("email: " + email);
+        User user = userService.findUser(email, pwd);
+        System.out.println("u: " + u);
+
+        if (user != null) {
+            session.setAttribute("USER_SESSION", user);
+            return "/admin/admin-index";
+        }
         else {
-            return "/me/login";
+            System.out.println("UserController: 登录失败");
+            return "/admin/admin-login";
         }
     }
 
-    @GetMapping("/me/about")
+    //访问关于
+    @GetMapping("/admin/about")
     public String profile(Model model) {
         User user = userService.showAbout();
         model.addAttribute(user);
-        return "/me/about";
+        return "/admin/about";
     }
 
-    @GetMapping("/me/edit")
+    //访问编辑
+    @GetMapping("/admin/edit")
     public String edit() {
-        return "/me/edit";
+        return "/admin/edit";
     }
 
-    @PostMapping("/me/edit")
+    //编辑更新
+    @PostMapping("/admin/edit")
     public String editAbout(User user) {
         userService.updateAbout(user);
-        return "/me/about";
+        return "/admin/about";
     }
 }
 
