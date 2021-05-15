@@ -55,9 +55,10 @@
             delete from post
             where id = #{id}
     </delete>
-<!--    <update id="updatePost" parameterType="post">-->
-<!--            update post-->
-<!--            set tag = #{tag}, title = #{title}, profile = #{profile}, body = #{body}, date = #{date}-->
-<!--            where id = #{id}-->
-<!--    </update>-->
+
+    <update id="updateById" parameterType="post">
+            update post
+            set tag = #{tag}, title = #{title}, profile = #{profile}, body = #{body}, date = #{date}
+            where id = #{id}
+    </update>
 </mapper>

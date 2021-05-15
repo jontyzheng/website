@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>添加博客</title>
+    <title>博客更新</title>
     <link rel="stylesheet" th:href="@{/css/examples/style.css}"/>
     <link rel="stylesheet" th:href="@{/css/editormd.css}"/>
     <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
@@ -10,8 +10,10 @@
 <body>
 <div id="layout">
     <form name="mdEditorForm">
+        <input th:value="${article.id}" name="id"  hidden></span>
+        【注意重新勾选标签, 否则将默认为 Java】<br/>
         <label>标签: </label>
-        <select name="tag">
+        <select name="tag" th:value="${article.tag}">
             <option value="Java">Java</option>
             <option value="MySQL">MySQL</option>
             <option value="Python">Python</option>
@@ -25,9 +27,9 @@
         <label>标题: </label><input type="text" name="title" th:value="${article.title}"><br/>
         <label>描述: </label><input type="text" name="profile" th:value="${article.profile}"><br/>
         <!--        <input type="date" name="date" style="display: none;">-->
-        更新于
+        更新时间:
         <span id="currentdate" onload="showdate()"/>time</span>
-        <input id="date" name="date" onload="setdate()" hidden/>
+        <input id="date" name="date" onload="setdate()" th:value="${article.date}" hidden/>
         <!-- date 显示和插入脚本 2021-04-07 16:06:15 -->
         <br>
         <script>
@@ -56,7 +58,7 @@
         <!--        value="2020-02-02"-->
         <label>内容: </label>
         <div id="test-editormd">
-            <textarea name="body" style="display:none;" th:value="{article.body}"></textarea>
+            <textarea name="body" style="display:none;" th:text="${article.body}"></textarea>
         </div>
         <br/>
         <!--        <input type="date" id="date" name="date" hidden>-->
@@ -87,12 +89,12 @@
             },
             //自定义图标下的文字
             toolbarIconTexts: {
-                publish: "<span bgcolor='gray'>发布</span>"
+                publish: "<span bgcolor='gray'>更新</span>"
             },
             toolbarHandlers: {
                 publish: function (cm, icon, cursor, selection) {
                     mdEditorForm.method = "post";
-                    mdEditorForm.action = "/posts/post";
+                    mdEditorForm.action = "/posts/update";
                     mdEditorForm.submit();
                 }
             }
