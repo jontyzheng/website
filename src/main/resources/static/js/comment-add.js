@@ -28,7 +28,7 @@ addComment = function() {
         data: {content: commentContent, author: author, email: email, postId: postId},
         success: function (data) {
             console.log(data)
-            alert("评论已提交, 刷新后即可查看");
+            alert("评论已提交后台审核");
         },
         error: function(request) {
             alert("评论发布有误");
