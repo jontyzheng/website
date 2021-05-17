@@ -30,7 +30,8 @@
         UPDATE user
         SET name = #{name},
             email = #{email},
-            pwd = #{email},
+            pwd = #{pwd},
+            wechat_id = #{wechatId},
             intro = #{intro}
         WHERE 1=1
     </update>

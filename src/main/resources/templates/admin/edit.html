@@ -6,14 +6,14 @@
 </head>
 <body>
     <form th:action="@{/admin/edit}" method="post">
-    <dt>修改头像</dt>
-    <dd></dd>
     <dt>修改昵称:</dt>
     <dd><input type="text" name="name"></dd>
-    <dt>修改密码:</dt>
-    <dd><input type="password" name="pwd"></dd>
     <dt>修改邮箱:</dt>
     <dd><input type="email" name="email"></dd>
+    <dt>修改密码:</dt>
+    <dd><input type="password" name="pwd"></dd>
+    <dt>修改微信号:</dt>
+    <dd><input type="text" name="wechatId"></dd>
     <dt>修改简介:</dt>
     <dd><textarea name="intro" cols="5" rows="5"></textarea></dd>
         <input type="submit" value="确认更新">
