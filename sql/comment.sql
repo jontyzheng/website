@@ -11,7 +11,7 @@
  Target Server Version : 50733
  File Encoding         : 65001
 
- Date: 16/05/2021 00:43:56
+ Date: 17/05/2021 15:55:36
 */
 
 SET NAMES utf8mb4;
@@ -31,31 +31,18 @@ CREATE TABLE `comment`  (
   PRIMARY KEY (`commentId`) USING BTREE,
   INDEX `fk_post_comm`(`postId`) USING BTREE,
   CONSTRAINT `fk_post_comm` FOREIGN KEY (`postId`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 51 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comment
 -- ----------------------------
 INSERT INTO `comment` VALUES (24, '来咯', '雷', '', 29, 1);
-INSERT INTO `comment` VALUES (25, '俺也一样', '张飞', '', 29, 0);
-INSERT INTO `comment` VALUES (28, '雷猴', '正正', '123456@qq.com', 35, 0);
-INSERT INTO `comment` VALUES (29, '雷猴', '正正', '123456@qq.com', 35, 0);
-INSERT INTO `comment` VALUES (30, '雷猴', '正正', '123456@qq.com', 35, 0);
-INSERT INTO `comment` VALUES (31, '整一波', '整整', '3207961486@qq.com', 35, 0);
-INSERT INTO `comment` VALUES (32, '你好, 警察', '警察', '123456@qq.com', 35, 0);
-INSERT INTO `comment` VALUES (33, '你好, 警察', '警察', '123456@qq.com', 35, 0);
-INSERT INTO `comment` VALUES (34, '你好, 警察', '警察', '123456@qq.com', 35, 0);
-INSERT INTO `comment` VALUES (35, '你好, 警察', '警察', '123456@qq.com', 35, 0);
-INSERT INTO `comment` VALUES (36, '你好, 警察', '警察', '123456@qq.com', 35, 0);
-INSERT INTO `comment` VALUES (37, ' 警察 警察 警察 警察 警察 警察', '警察', '123456@qq.com', 35, 0);
-INSERT INTO `comment` VALUES (39, '222', 'zheng jonty', 'jontyzhen@gmail.com', 35, 0);
-INSERT INTO `comment` VALUES (40, 'eee', 'zheng jonty', '123456@qq.com', 35, 0);
-INSERT INTO `comment` VALUES (41, 'uuu', 'zheng jonty', '123456@qq.com', 34, 0);
-INSERT INTO `comment` VALUES (43, '踩一踩', '德华', '', 30, 0);
-INSERT INTO `comment` VALUES (44, '一条新的评论', '', '', 30, 0);
-INSERT INTO `comment` VALUES (45, '测试', '', '', 30, 0);
-INSERT INTO `comment` VALUES (46, '测试不输入姓名', '', '', 30, 0);
-INSERT INTO `comment` VALUES (47, '测试不输入邮箱', 'eee', '', 30, 0);
-INSERT INTO `comment` VALUES (48, '完整的评论内容', '完整的ID', '完整的邮箱', 30, 0);
+INSERT INTO `comment` VALUES (28, '雷猴', '正正', '123456@qq.com', 35, 1);
+INSERT INTO `comment` VALUES (30, '雷猴', '正正', '123456@qq.com', 35, 1);
+INSERT INTO `comment` VALUES (43, '踩一踩', '德华', '', 30, 1);
+INSERT INTO `comment` VALUES (44, '一条新的评论', '', '', 30, 1);
+INSERT INTO `comment` VALUES (45, '测试', '', '', 30, 1);
+INSERT INTO `comment` VALUES (49, '这篇水仙花写得好', '正正', '123456@qq.com', 30, 1);
+INSERT INTO `comment` VALUES (50, '这篇文章写得好', '雷锋', '123456@qq.com', 64, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

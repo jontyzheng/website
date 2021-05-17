@@ -11,7 +11,7 @@
  Target Server Version : 50733
  File Encoding         : 65001
 
- Date: 16/05/2021 00:44:16
+ Date: 17/05/2021 15:55:51
 */
 
 SET NAMES utf8mb4;
@@ -36,6 +36,6 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, '123@admin.com', 'admin', 'admin', '/img/avatar-default.jpg', '123456', '我是新的简介内容');
+INSERT INTO `user` VALUES (1, '123@admin.com', 'admin', '', '/img/avatar-default.jpg', 'abcdefg', '我是新的简介内容');
 
 SET FOREIGN_KEY_CHECKS = 1;
