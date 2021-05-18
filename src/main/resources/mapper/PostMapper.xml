@@ -23,6 +23,7 @@
     <select id="lastest" resultType="post">
             SELECT title, date, id
             From post
+            order by date desc
             Limit 10
     </select>
 
