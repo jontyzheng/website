@@ -10,5 +10,5 @@ public interface UserDao {
 
     User showAbout();
 
-    void updateAbout(User user);
+    int updateAbout(User user);
 }

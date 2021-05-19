@@ -24,7 +24,7 @@ public class UserService {
         return userDao.showAbout();
     }
 
-    public void updateAbout(User user) {
-        userDao.updateAbout(user);
+    public int updateAbout(User user) {
+        return userDao.updateAbout(user);
     }
 }

@@ -73,17 +73,6 @@ public class UserController {
         return "/admin/about";
     }
 
-    //访问编辑
-    @GetMapping("/admin/edit")
-    public String edit() {
-        return "/admin/edit";
-    }
 
-    //编辑更新
-    @PostMapping("/admin/edit")
-    public String editAbout(User user) {
-        userService.updateAbout(user);
-        return "/admin/about";
-    }
 }
 

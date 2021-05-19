@@ -71,10 +71,9 @@ public class PostController {
         System.out.println(tag);
         //输出 null 区间锁定参数未获取
         //添加@PathVariable 输出 Python, Python 正是首页触发的标签
+        model.addAttribute("tag",tag);
         List<Post> tagPosts = postService.byTag(tag);
         model.addAttribute("tagPosts", tagPosts);
-        System.out.println("执行完 byTag 查询");
-        System.out.println(tagPosts.isEmpty());
         //输出 true 区间锁定到 sql 语句执行部分
         //sql调试, 无误
         //输出 false sql 执行完毕, 区间锁定到显示部分

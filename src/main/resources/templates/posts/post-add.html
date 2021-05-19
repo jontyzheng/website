@@ -6,8 +6,11 @@
     <link rel="stylesheet" th:href="@{/css/examples/style.css}"/>
     <link rel="stylesheet" th:href="@{/css/editormd.css}"/>
     <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" th:href="@{/css/admin/manage.css}"/>
 </head>
 <body>
+<aside th:insert="layout.html::admin-aside"/>
+<main id="admin-main">
     <div id="layout">
     <form name="mdEditorForm">
         <label>标签: </label>
@@ -62,6 +65,7 @@
 <!--        <input type="submit" value="提交" onclick="setDate()">-->
     </form>
     </div>
+</main>
     <script th:src="@{/js/examples/jquery.min.js}"></script>
     <script th:src="@{/js/editormd.min.js}"></script>
     <!--时间 js-->

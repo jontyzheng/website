@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:fragment="headFragment">
-    <link rel="stylesheet" th:href="@{/css/layout.css}"/>
+    <link rel="stylesheet" href="css/layout.css" th:href="@{/css/layout.css}"/>
 <!--    <link rel="icon" th:href="@{/img/avatar-default.jpg}"/>-->
 <!--    <script th:src="@{/js/jq.js}"></script>-->
 </head>
@@ -27,6 +27,13 @@
         <a th:href="@{/posts/tag/other}">others</a>
         <!-- 2021-04-22 14:47:39-->
     </nav>
+
+    <aside th:fragment="admin-aside" id="admin-aside">
+        <a href="posts/intro-edit.html" th:href="@{/admin/intro-edit}">信息更新</a><br>
+        <a href="posts/post-add.html" th:href="@{/posts/post}">发布博客</a><br>
+        <a href="posts/aritcle-manage.html" th:href="@{/admin/article-manage}">管理博客</a><br>
+        <a href="posts/comment-manage.html" th:href="@{/admin/comment-manage}">管理评论</a><br>
+    </aside>
 
     <footer th:fragment="site-footer">
         &copy; Spring MVC Blog System, 2021</footer>

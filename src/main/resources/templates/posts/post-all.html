@@ -11,6 +11,7 @@
     <header th:insert="layout::header"></header>
     <div class="main-container">
         <main>
+            <b>所有文章</b>
             <div th:unless="${ #lists.isEmpty(posts) }">
                 <div th:each="post: ${posts}">
                     <article>

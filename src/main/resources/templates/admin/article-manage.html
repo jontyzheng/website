@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/admin/table.css}"/>
+    <link rel="stylesheet" href="css/admin/table.css" th:href="@{/css/admin/table.css}"/>
+    <link rel="stylesheet" th:href="@{/css/admin/manage.css}"/>
     <title>文章管理</title>
 </head>
 
 <body>
+    <aside th:insert="layout.html::admin-aside"/>
+    <main id="admin-main">
     当前用户 id:<span th:text="${session.USER_SESSION.email}"></span><br/>
-    <h1>博客管理</h1>
+    <h3>博客管理</h3>
     <div th:if="${!#lists.isEmpty(articles)}">
         <table border="1px">
             <tr>
@@ -29,11 +32,12 @@
                 <td th:text="${article.profile}">55577855</td>
                 <td th:text="${article.body}" hidden>Bill Gates</td>
                 <td th:text="${article.date}">55577854</td>
-                <td><a th:href="@{'/posts/update?id=' + ${article.id}}">修改文章</a></td>
-                <td><a th:href="@{'/posts/delete?id=' + ${article.id}}">删除文章</a></td>
+                <td class="option" id="update-op"><a th:href="@{'/posts/update?id=' + ${article.id}}">修改文章</a></td>
+                <td class="option" id="delete-op"><a th:href="@{'/posts/delete?id=' + ${article.id}}">删除文章</a></td>
             </tr>
         </table>
     </div>
+    </main>
 </body>
 </html>
 

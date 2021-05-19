@@ -15,13 +15,13 @@
     <div id="layout">
         <div id="article-head">
             <h1 th:text="${post.title}"></h1>
-            <h2 th:text="${post.tag}"></h2>
+            分类于: <a th:href="@{'/posts/tag/' + ${post.tag} }"><span th:text="${post.tag}"></span></a>
         </div>
         <div id="test-editormd">
             简介:
             <p th:text="${post.profile}"></p>
             <textarea style="display:none;" th:text="${post.body}"></textarea>
-            <u>发布于 <span th:text="${post.date}"></span></u>
+            发布于 <span th:text="${post.date}"></span>
         </div>
         <hr style="border: 2px solid lightskyblue;"/><br/>
         <!-- 显示评论部分 -->

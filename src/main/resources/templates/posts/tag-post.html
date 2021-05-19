@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>标签文章</title>
-    <link rel="stylesheet" th:href="@{/css/tag-posts.css}"/>
+    <link rel="stylesheet" href="css/tag-posts.css" th:href="@{/css/tag-posts.css}"/>
 </head>
 <body>
     <div th:insert="layout::headFragment"></div>
@@ -11,6 +11,7 @@
 
     <div class="main-container">
         <main>
+            您当前所在标签: <b th:text="${tag}">标签名</b>
             <div th:unless="${ #lists.isEmpty(tagPosts) }">
                 <div th:each="post: ${tagPosts}">
                     <article>

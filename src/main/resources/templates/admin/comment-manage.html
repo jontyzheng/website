@@ -3,39 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>评论管理</title>
+
     <link rel="stylesheet" th:href="@{/css/admin/table.css}"/>
+    <link rel="stylesheet" th:href="@{/css/admin/manage.css}"/>
 </head>
 <body>
-    <h1>评论管理</h1>
-    <div th:if="${!#lists.isEmpty(comments)}">
-        <table border="1px">
-            <tr>
-                <th>commentId</th>
-                <th>留言</th>
-                <th>ID</th>
-                <th>邮箱</th>
-                <th>所属文章 id</th>
-                <th>评论状态</th>
-                <th>通过审核</th>
-                <th>是否删除</th>
-                <th>前往原文</th>
-            </tr>
-            <tr th:each="comment:${comments}">
-                <td th:text="${comment.commentId}">Bill Gates</td>
-                <td th:text="${comment.content}">Bill Gates</td>
-                <td th:text="${comment.author}">55577854</td>
-                <td th:text="${comment.email}">55577855</td>
-                <td th:text="${comment.postId}">Bill Gates</td>
-                <td>
-                    <!--二选一显示 span-->
-                    <span th:if="${comment.status} eq 0" th:text="未审核"></span>
-                    <span th:if="${comment.status} eq 1" th:text="已审核"></span>
-                </td>
-                <td><a th:href="@{'/comment/update?commentId=' + ${comment.commentId}}" style="background: lightgreen; color: white">通过</a></td>
-                <td><a th:href="@{'/comment/delete?commentId=' + ${comment.commentId}}" style="background: red; color: white">删除</a></td>
-                <td><a th:text="${comment.postId}"  th:href="@{'/posts/postId?id=' + ${comment.postId} }">前往原文</a></td>
-            </tr>
-        </table>
-    </div>
+    <aside th:insert="layout.html::admin-aside"/>
+    <main id="admin-main">
+        <h3>评论管理</h3>
+        当前用户 id:<span th:text="${session.USER_SESSION.email}"></span><br/>
+        <div th:if="${!#lists.isEmpty(comments)}">
+            <table border="1px">
+                <tr>
+                    <th>commentId</th>
+                    <th>留言</th>
+                    <th>ID</th>
+                    <th>邮箱</th>
+                    <th>所属文章 id</th>
+                    <th>评论状态</th>
+                    <th>通过审核</th>
+                    <th>是否删除</th>
+                    <th>前往原文</th>
+                </tr>
+                <tr th:each="comment:${comments}">
+                    <td th:text="${comment.commentId}">Bill Gates</td>
+                    <td th:text="${comment.content}">Bill Gates</td>
+                    <td th:text="${comment.author}">55577854</td>
+                    <td th:text="${comment.email}">55577855</td>
+                    <td th:text="${comment.postId}">Bill Gates</td>
+                    <td>
+                        <!--二选一显示 span-->
+                        <span th:if="${comment.status} eq 0" th:text="未审核"></span>
+                        <span th:if="${comment.status} eq 1" th:text="已审核"></span>
+                    </td>
+                    <td class="option" id="pass-op"><a th:href="@{'/comment/update?commentId=' + ${comment.commentId}}">通过</a></td>
+                    <td class="option" id="delete-op"><a th:href="@{'/comment/delete?commentId=' + ${comment.commentId}}">删除</a></td>
+                    <td class="option"><a th:text="${comment.postId}"  th:href="@{'/posts/postId?id=' + ${comment.postId} }">前往原文</a></td>
+                </tr>
+            </table>
+        </div>
+    </main>
 </body>
 </html>

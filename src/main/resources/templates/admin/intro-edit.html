@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>edit</title>
+    <link rel="stylesheet" th:href="@{/css/admin/intro-edit.css}"/>
+    <link rel="stylesheet" th:href="@{/css/admin/manage.css}"/>
+</head>
+<body>
+<aside th:insert="layout::aside"/>
+<main id="admin-main">
+<div id="edit-div">
+    <form th:action="@{/admin/intro-edit}" method="post">
+    <dt>修改昵称:</dt>
+    <dd><input type="text" name="name" th:value="${preUser.name}"></dd>
+    <dt>修改邮箱:</dt>
+    <dd><input type="email" name="email" th:value="${preUser.email}"></dd>
+    <dt>修改密码:</dt>
+    <dd><input type="password" name="pwd" th:value="${preUser.pwd}"></dd>
+    <dt>修改微信号:</dt>
+    <dd><input type="text" name="wechatId" th:value="${preUser.wechatId}"></dd>
+    <dt>修改简介:</dt>
+    <dd><textarea name="intro" cols="21" rows="5" th:text="${preUser.intro}"></textarea></dd>
+        <input type="submit" value="确认更新">
+    </form>
+</div>
+</main>
+</body>
+</html>

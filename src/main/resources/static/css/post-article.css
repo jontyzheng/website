@@ -12,3 +12,7 @@ main {
     width: 700px;
     margin: 0 auto;
 }
+
+a {
+    text-decoration: underline;
+}

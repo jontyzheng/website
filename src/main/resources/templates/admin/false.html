@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>false</title>
+    <link rel="stylesheet" th:href="@{/css/admin/manage.css}"/>
 </head>
 <body>
-    FALSE
-    文章删除有误, 请重新检查程序
-    <a href="posts/article-manage.html" th:href="@{/admin/article-manage}">管理博客</a><br/>
-    <a href="posts/comment-manage.html" th:href="@{/admin/comment-manage}">管理评论</a>
+<aside th:insert="layout::aside"/>
+<main id="admin-main">
+    <p style="font-size: 1.5em; font-weight: bold; color: lightcoral">
+        FALSE☠
+        操作有误, 请重新检查程序
+    </p>
+</main>
 </body>
 </html>

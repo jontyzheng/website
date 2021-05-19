@@ -7,3 +7,18 @@ table {
 table tr, table td {
     width: 200px;
 }
+
+.option {
+    text-align: center;
+}
+
+td[id="update-op"] a {
+    color: #0d6efd;
+}
+
+td[id="delete-op"] a {
+    color: #aa2222;
+}
+td[id="pass-op"] a {
+    color: #1DC116;
+}
