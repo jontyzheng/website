@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索结果</title>
+    <link rel="stylesheet" href="css/index.css" th:href="@{/css/index.css}"/>
+    <script th:src="@{/js/vue.min.js}"></script>
+</head>
+<body>
+    <div th:insert="layout.html :: headFragment"></div> <!--2021-04-07 17:38:40 layout.css 和 index.css 并存的方法: 不在head里面引入片段-->
+
+    <header th:insert="layout::site-header"/>
+    <nav th:insert="layout::site-nav"/>
+
+    <div class="main-container" id="app">
+        <!--搜索-->
+        <form style="display: inline-block;">
+            <!-- 双向绑定搜索框 -->
+            <input type="text" v-model="keyword" placeholder="暂不支持中文搜索">
+            <button type="submit" @click.prevent="searchKeyword">搜索</button>
+            <!-- 绑定点击事件 -->
+        </form>
+        <main>
+        搜索结果如下：
+        <div v-if="results" v-for="result in results">
+            <article>
+
+                <span>{{result.date}}</span><br/>
+                <a :href="'/posts/postId?id=' + result.id"><span>{{result.title}}</span></a>
+                <!--显示是 post.title, 点击传递的值是 post.id 触发的是 /posts/id/xx-->
+            </article>
+        </div>
+        <p v-else>未发布任何文章</p>
+        </main>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                keyword: '',
+                results: []
+            },
+            methods: {
+                searchKeyword() {
+                    var keyword = this.keyword;
+                    console.log(keyword);
+                    //使用 axios 异步提交请求
+                    axios.get('search/'+keyword).then(response=> {
+                        console.log(response.data);
+                        this.results = response.data;
+                    })
+                }
+            }
+        })
+    </script>
+    <script th:src="@{/js/vue.min.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</body>
+</html>

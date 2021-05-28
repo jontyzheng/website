@@ -21,15 +21,11 @@ public class AdminController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/admin")
-    public String toAdmin() {
-        return "/admin/admin-login";
-    }
 
     //管理
     @GetMapping("/admin/article-manage")
     public String manage(Model model) {
-        List<Post> articles = postService.listPost();
+        List<Post> articles = postService.allPost();
         model.addAttribute("articles", articles);
         return "/admin/article-manage";
     }

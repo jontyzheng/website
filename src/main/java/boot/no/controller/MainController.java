@@ -18,23 +18,14 @@ import java.util.List;
 @Controller
 public class MainController {
 
-    @Autowired
-    private PostService postService;
-
-    @GetMapping("/")
-    public String defaultIndex(Model model) {
-        //显示最新的十条
-        System.out.println("xx");
-        List<Post> lastest = postService.lastest();
-        model.addAttribute("lastest", lastest);
-        System.out.println(lastest);
-        return "index";
-    }
-
     @GetMapping("/index")
     public String toIndex() {
         return "index";
     }
 
+    @GetMapping("/admin")
+    public String toAdmin() {
+        return "/admin/admin-login";
+    }
 
 }

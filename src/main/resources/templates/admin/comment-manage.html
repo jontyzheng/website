@@ -33,8 +33,8 @@
                     <td th:text="${comment.postId}">Bill Gates</td>
                     <td>
                         <!--二选一显示 span-->
-                        <span th:if="${comment.status} eq 0" th:text="未审核"></span>
-                        <span th:if="${comment.status} eq 1" th:text="已审核"></span>
+                        <span class="option" id="undo-op" th:if="${comment.status} eq 0" th:text="未审核" ></span>
+                        <span class="option" id="done-op" th:if="${comment.status} eq 1" th:text="已审核" ></span>
                     </td>
                     <td class="option" id="pass-op"><a th:href="@{'/comment/update?commentId=' + ${comment.commentId}}">通过</a></td>
                     <td class="option" id="delete-op"><a th:href="@{'/comment/delete?commentId=' + ${comment.commentId}}">删除</a></td>

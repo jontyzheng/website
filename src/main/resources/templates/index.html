@@ -9,16 +9,16 @@
 
     <header th:insert="layout::site-header"/>
     <nav th:insert="layout::site-nav"/>
-    <div class="main-container">
+    <div class="main-container" id="app">
         <main>
             <div class="sub-nav">
-                <a th:href="@{/}">最新</a>
+                <a th:href="@{/}">最新发布的 10 篇文章</a>
             </div>
             <div th:if="${ !#lists.isEmpty(lastest) }">
                 <div th:each="post: ${lastest}">
                     <article>
-                        <span th:if="${post.date}" th:text="${post.date}">发布日期</span><br/>
-                        <a th:if="${post.title}" th:text="${post.title}"  th:href="@{'/posts/postId?id=' + ${post.id} }">发布标题</a>
+                        <span th:if="${post.date}" th:text="${post.date}"></span><br/>
+                        <a th:if="${post.title}" th:text="${post.title}"  th:href="@{'/posts/postId?id=' + ${post.id} }"></a>
                         <!--显示是 post.title, 点击传递的值是 post.id 触发的是 /posts/id/xx-->
                     </article>
                 </div>
@@ -30,5 +30,7 @@
     </div>
 
     <footer th:replace="layout::site-footer"/>
+
+
 </body>
 </html>

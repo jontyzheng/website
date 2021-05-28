@@ -1,16 +1,36 @@
 package boot.no.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 //修改数据类型!
-
-public class Post {
+//index 对应数据库中的数据库，type对应数据库中的表
+//@Document(indexName="blogdb", type="post")
+public class Post implements Serializable {
+    @Id
     private Long id;
+
+    @Field(type= FieldType.Keyword)
     private String tag;
+
+    @Field(type=FieldType.Keyword)
     private String title;
+
+    @Field(type=FieldType.Keyword)
     private String profile;
+
+    //String 对应 Keyword
+    @Field(type=FieldType.Keyword)
     private String body;
+
+    @Field(type=FieldType.Date)
     private Date date;              //对应 db 中 date 类型的字段 date
+
     private List<Comment> comments; //增加一个List<Commetn>表示文章下的多条评论
 
     public Long getId() {

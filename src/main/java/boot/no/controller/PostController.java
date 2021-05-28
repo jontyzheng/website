@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class PostController {
@@ -18,10 +19,20 @@ public class PostController {
     @Autowired
     PostService postService;
 
+    @GetMapping("/")
+    public String defaultIndex(Model model) throws Exception {
+        //显示最新的十条
+        System.out.println("xx");
+        List<Post> lastest = postService.lastest();
+        model.addAttribute("lastest", lastest);
+        System.out.println(lastest);
+        return "/index";
+    }
+
     @GetMapping("/posts")
-    public String post(Model model) {
+    public String post(Model model) throws Exception {
         //向 posts/index 页中添加一个 post 列表对象
-        List<Post> posts = postService.listPost();
+        List<Post> posts = postService.allPost();
         model.addAttribute("posts", posts);
         return "/posts/post-all";
     }
@@ -42,7 +53,7 @@ public class PostController {
             return "/posts/post-article";
         }
         else
-            return "false";
+            return "/admin/false";
     }
     //2021-04-06 404 Bad Request closed
 
@@ -91,5 +102,31 @@ public class PostController {
         System.out.println("评论: " + article.getComments());
         model.addAttribute("post", article);
         return "/posts/post-article";
+    }
+
+    // 解析 parse 以写到默认主页映射
+    @GetMapping("/search/{keyword}")
+    @ResponseBody   //数据最后通过 vue 模板引擎显示
+    public List<Map<String, Object>> search(@PathVariable("keyword") String keyword) throws Exception {
+        return postService.search(keyword);
+    }
+
+
+    //为防止重复数据，此 url 只访问一次
+    @GetMapping("/import")
+    @ResponseBody
+    public String importToES() throws Exception {
+        // updated: 访问时解析所有内容到 es 索引，以便后面进行全文搜索
+        boolean hasImport = postService.parse();
+        if (hasImport)
+            System.out.println("PostController: 数据库文章导入 es 索引成功");
+        else
+            System.out.println("PostController: 数据库文章导入 es 索引错误");
+        return "数据导入成功，现在可以正常搜索了 此url在项目运行期间执行一次即可，否则会导致搜索结果重复";
+    }
+
+    @GetMapping("/search")
+    public String search() {
+        return "/posts/search-page";
     }
 }

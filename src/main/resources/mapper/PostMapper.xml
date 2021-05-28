@@ -8,7 +8,7 @@
     </insert>
 
     <!--查询所有博客-->
-    <select id="listPost" resultType="post">
+    <select id="allPost" resultType="post">
             SELECT * from post
     </select>
 
