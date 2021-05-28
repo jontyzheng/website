@@ -1,0 +1,18 @@
+main {
+    width: 1020px;
+    margin: 0 auto;
+}
+
+#layout {
+    width: 700px;
+    float: left;
+}
+
+#article-comment {
+    width: 700px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: underline;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>文章</title>
+    <link rel="stylesheet" th:href="@{/css/examples/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/editormd.css}" />
+    <link rel="stylesheet" th:href="@{/css/post-article.css}">
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+    <div th:insert="layout::header"></div>
+    <div th:insert="layout::headFragment"></div>
+    <main>
+    <div id="layout">
+        <div id="article-head">
+            <h1 th:text="${post.title}"></h1>
+            分类于: <a th:href="@{'/posts/tag/' + ${post.tag} }"><span th:text="${post.tag}"></span></a>
+        </div>
+        <div id="test-editormd">
+            简介:
+            <p th:text="${post.profile}"></p>
+            <textarea style="display:none;" th:text="${post.body}"></textarea>
+            发布于 <span th:text="${post.date}"></span>
+        </div>
+        <hr style="border: 2px solid lightskyblue;"/><br/>
+        <!-- 显示评论部分 -->
+        <div id="article-comment">
+            <h2>评论</h2>
+            <div th:if="${ !#lists.isEmpty(post.comments)}">
+                <div th:each="comment:${post.comments}">
+                    <!--update: 只显示 status 字段等于 1 (已审核) 的评论-->
+                    <div th:if="${comment.status} eq 1">
+                        <b><span th:text="${comment.author}"></span></b> :
+                        <span th:text="${comment.content}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <!--添加评论部分 -->
+        <div id="add-comment">
+            <!--评论表单 -->
+            <form id="commentForm" action="">
+            <textarea placeholder="请输入评论信息..." rows="4" cols="100" name="content" id="content" required></textarea><br>
+                <input placeholder="ID" name="author" id="author" required/><br/>
+                <input placeholder="邮箱" name="email" id="email" type="email" required/><br/>
+                <!-- 传送 postId 进去-->
+                <input id="postId" name="postId" th:value="${post.id}" hidden></input><br/>
+<!--                <input type="submit" value="发布" onclick="addComment()">-->
+                <button onclick="addComment()" type="submit">发布</button>
+            </form>
+
+        </div>
+        </div>
+    </div>
+    </main>
+
+    <script th:src="@{/js/examples/jquery.min.js}"></script>
+    <script th:src="@{/js/comment-add.js}" src="../static/js/comment-add.js" ></script>
+    <script th:src="@{/lib/marked.min.js}"></script>
+    <script th:src="@{/lib/prettify.min.js}"></script>
+    <script th:src="@{/lib/raphael.min.js}"></script>
+    <script th:src="@{/lib/underscore.min.js}"></script>
+    <script th:src="@{/lib/sequence-diagram.min.js}"></script>
+    <script th:src="@{/lib/flowchart.min.js}"></script>
+    <script th:src="@{/lib/jquery.flowchart.min.js}"></script>
+    <script th:src="@{/js/editormd.min.js}"></script>
+
+    <script type="text/javascript">
+            var testEditor;
+
+            $(function() {
+                testEditor = editormd.markdownToHTML("test-editormd", {
+                    width: "90%",
+                    height: 700,
+                    path: "../lib/",
+                    preview: true,
+                    watch: true,
+                    editor: false,
+                })
+            })
+    </script>
+</body>
+</html>

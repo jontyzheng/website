@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: #8da6ce;
+}
+
+table tr, table td {
+    width: 200px;
+}
+
+.option {
+    text-align: center;
+}
+
+td[id="update-op"] a {
+    color: #0d6efd;
+}
+
+td[id="delete-op"] a, span[id="undo-op"]{
+    color: #aa2222;
+}
+td[id="pass-op"] a, span[id="done-op"]{
+    color: #1DC116;
+}

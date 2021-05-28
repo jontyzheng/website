@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>index</title>
+    <link rel="stylesheet" href="css/index.css" th:href="@{/css/index.css}"/> <!-- 2021-04-07 17:38:26 index.css 引入-->
+</head>
+<body>
+    <div th:insert="layout.html :: headFragment"></div> <!--2021-04-07 17:38:40 layout.css 和 index.css 并存的方法: 不在head里面引入片段-->
+
+    <header th:insert="layout::site-header"/>
+    <nav th:insert="layout::site-nav"/>
+    <div class="main-container" id="app">
+        <main>
+            <div class="sub-nav">
+                <a th:href="@{/}">最新发布的 10 篇文章</a>
+            </div>
+            <div th:if="${ !#lists.isEmpty(lastest) }">
+                <div th:each="post: ${lastest}">
+                    <article>
+                        <span th:if="${post.date}" th:text="${post.date}"></span><br/>
+                        <a th:if="${post.title}" th:text="${post.title}"  th:href="@{'/posts/postId?id=' + ${post.id} }"></a>
+                        <!--显示是 post.title, 点击传递的值是 post.id 触发的是 /posts/id/xx-->
+                    </article>
+                </div>
+            </div>
+            <div th:if="${#lists.isEmpty(lastest)}">
+                <p>未发布任何文章</p>
+            </div>
+        </main>
+    </div>
+
+    <footer th:replace="layout::site-footer"/>
+
+
+</body>
+</html>

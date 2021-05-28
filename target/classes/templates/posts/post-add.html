@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>添加博客</title>
+    <link rel="stylesheet" th:href="@{/css/examples/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/editormd.css}"/>
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" th:href="@{/css/admin/manage.css}"/>
+</head>
+<body>
+<aside th:insert="layout.html::admin-aside"/>
+<main id="admin-main">
+    <div id="layout">
+    <form name="mdEditorForm">
+        <label>标签: </label>
+        <select name="tag">
+            <option value="Java">Java</option>
+            <option value="MySQL">MySQL</option>
+            <option value="Python">Python</option>
+            <option value="Leet">Leet</option>
+            <option value="Git">Git</option>
+            <option value="js">js</option>
+            <option value="css">css</option>
+            <option value="others">其它</option>
+        </select>
+        <br/>
+        <label>标题: </label><input type="text" name="title"><br/>
+        <label>描述: </label><input type="text" name="profile"><br/>
+<!--        <input type="date" name="date" style="display: none;">-->
+        <span id="currentdate" onload="showdate()"/>time</span>
+        <input id="date" name="date" onload="setdate()" hidden/>
+        <!-- date 显示和插入脚本 2021-04-07 16:06:15 -->
+        <br>
+        <script>
+            var eg = {}
+
+            eg.$ = function (id) {
+                return document.getElementById(id);
+            }
+
+            function setdate() {
+                var dater = new Date();
+                var date = dater.toISOString().substring(0, 10);
+                eg.$("date").value = date;
+            }
+            setdate();
+
+            function showdate() {
+                var dater = new Date();
+                var date = dater.toISOString().substring(0, 10);
+                eg.$("currentdate").innerHTML = date;
+            }
+
+            showdate();
+        </script>
+
+<!--        value="2020-02-02"-->
+        <label>内容: </label>
+        <div id="test-editormd">
+            <textarea name="body" style="display:none;"></textarea>
+        </div>
+        <br/>
+<!--        <input type="date" id="date" name="date" hidden>-->
+<!--        <input type="submit" value="提交" onclick="setDate()">-->
+    </form>
+    </div>
+</main>
+    <script th:src="@{/js/examples/jquery.min.js}"></script>
+    <script th:src="@{/js/editormd.min.js}"></script>
+    <!--时间 js-->
+    <script th:src="@{/js/post-date.js}" src="../static/js/post-date.js" ></script>
+    <script type="text/javascript">
+        var textEditor;
+
+        $(function() {
+
+            textEditor = editormd("test-editormd", {
+                width: "90%",
+                height: "640",
+                syncScrolling: "single",
+                path: "../lib/",
+                imageUpload: true,
+                imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                //图片上传的请求接口
+                imageUploadURL: "/posts/post/image/upload",
+                toolbarIcons: function() {
+                    return ["undo", "redo", "|", "bold", "quote", "italic", "h1", "h2", "h3", "h4", "h5", "h6", "image",  "code", "link", "code-block", "table", "publish"];
+                    //自定义工具栏图标
+                },
+                //自定义图标下的文字
+                toolbarIconTexts: {
+                    publish: "<span bgcolor='gray'>发布</span>"
+                },
+                toolbarHandlers: {
+                    publish: function (cm, icon, cursor, selection) {
+                        mdEditorForm.method = "post";
+                        mdEditorForm.action = "/posts/post";
+                        mdEditorForm.submit();
+                    }
+                }
+            });
+        })
+
+    </script>
+</body>
+</html>

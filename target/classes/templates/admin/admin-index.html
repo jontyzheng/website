@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员主页</title>
+    <link rel="stylesheet" th:href="@{/css/admin/manage.css}"/>
+</head>
+<body>
+    <aside th:insert="layout::aside"/>
+    <main id="admin-main">
+        当前用户 id:
+        <span th:text="${session.USER_SESSION.email}"></span><br/>
+    </main>
+</body>
+</html>

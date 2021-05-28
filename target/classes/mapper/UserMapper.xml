@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="boot.no.dao.UserDao">
+
+    <!--注册-->
+    <insert id="addUser" parameterType="user">
+            INSERT INTO user(name, pwd)
+            VALUES(#{name}, #{pwd})
+    </insert>
+
+    <!--完善信息-->
+
+    <!--登录-->
+    <select id="findUser" parameterType="String" resultType="User">
+            SELECT *
+            from user
+            WHERE email = #{email}
+            and pwd = #{pwd}
+    </select>
+
+    <!--展示信息-->
+    <select id="showAbout" resultType="user">
+        SELECT name, email, wechat_id, intro FROM user
+        WHERE id = 1
+    </select>
+
+    <!--更新信息-->
+    <update id="updateAbout" parameterType="user">
+        UPDATE user
+        SET name = #{name},
+            email = #{email},
+            pwd = #{pwd},
+            wechat_id = #{wechatId},
+            intro = #{intro}
+        WHERE 1=1
+    </update>
+</mapper>

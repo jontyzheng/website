@@ -1,0 +1,20 @@
+.main-container {
+    width: 1020px;
+    margin: 20px auto;
+}
+
+main {
+    width: 700px;
+    float: left;     /*main 背景区分外部*/
+    margin: 0 auto;
+}
+
+article {
+    border: 1px solid #ccc;
+    height: 40px;
+    padding: 1em;
+}
+
+article span {
+    font-size: 12px;
+}

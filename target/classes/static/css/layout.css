@@ -1,0 +1,40 @@
+body {
+    margin: 0;  /*2021-04-07 18:00:19 header 两端贴合*/
+    padding: 0;
+    color: #717780;
+}
+
+header {
+    height: 60px;
+    box-shadow: 0px 5px 2px #ccc;   /*2021-04-07 17:59:52 header 阴影效果*/
+    line-height: 60px;              /*2021-04-07 18:26:07 超链接垂直居中*/
+    margin: 0 auto;
+    margin-bottom: 0;
+}
+
+header>a:first-child {
+    margin-left: 250px;             /*不修改总宽度的情况下, 导航栏的第一个对齐*/
+}
+
+header>a {
+    margin: 0 20px;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #3783ff;
+}
+
+header img {
+    vertical-align: middle;         /*2021-04-07 18:20:45 logo 垂直居中*/
+}
+
+footer {
+    text-align: center;
+}
+

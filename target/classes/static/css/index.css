@@ -1,0 +1,66 @@
+nav {
+    /*text-indent: 105px;     !*文本缩进*!*/
+    height: 40px;
+    line-height: 40px;      /*文本垂直居中*/
+}
+
+nav a{
+    /*border: 1px solid #ccc;*/
+    margin-right: 30px;     /*标签项分隔*/
+    text-align: center;
+}
+
+nav>a:first-child {
+    margin-left: 250px;
+}
+
+.main-container {
+    width: 1020px;
+    margin: 10px auto;             /*main-container 居中*/
+          /*main 外部*/
+}
+
+main {
+    width: 700px;
+    float: left;
+    background: white;          /*main 背景区分外部*/
+}
+
+.sub-nav {
+    height: 40px;
+}
+
+article {
+    border: 1px solid #ccc;
+    height: 40px;
+    padding: 1em;
+}
+
+article span {
+    font-size: 12px;
+}
+
+aisde {
+    min-width: 50px;
+    float: right;
+    height: 960px;
+}
+
+.ad-block {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #0d6efd;
+}
+
+.user-block {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #0c4128;
+}
+
+footer {
+    clear: both;
+}
+
+
+

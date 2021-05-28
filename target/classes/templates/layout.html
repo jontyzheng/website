@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="headFragment">
+    <link rel="stylesheet" href="css/layout.css" th:href="@{/css/layout.css}"/>
+</head>
+<body>
+    <header th:fragment="site-header">
+        <a href="index.html" th:href="@{/}"><img
+                th:src="@{/img/site-logo.png}"/></a>
+        <!--src="../static/img/site-logo.png"-->
+        <a href="index.html" th:href="@{/}">Home</a>
+        <a href="/posts/index.html" th:href="@{/posts}">Posts</a>
+
+        <a href="/admin/about.html" th:href="@{/admin/about}">About</a>
+
+    </header>
+
+    <nav th:fragment="site-nav">
+        <a th:href="@{/}">推荐</a></li>
+        <a th:href="@{/posts/tag/Python}">Python</a>
+        <a th:href="@{/posts/tag/Java}">Java</a>
+        <a th:href="@{/posts/tag/MySQL}">MySQL</a>
+        <a th:href="@{/posts/tag/js}">js</a>
+        <a th:href="@{/posts/tag/css}">css</a>
+        <a th:href="@{/posts/tag/other}">others</a>
+        <!-- 2021-04-22 14:47:39-->
+        <a th:href="@{/search}">前往搜索</a>
+    </nav>
+
+    <aside th:fragment="admin-aside" id="admin-aside">
+        <a href="posts/intro-edit.html" th:href="@{/admin/intro-edit}">信息更新</a><br>
+        <a href="posts/post-add.html" th:href="@{/posts/post}">发布博客</a><br>
+        <a href="posts/aritcle-manage.html" th:href="@{/admin/article-manage}">管理博客</a><br>
+        <a href="posts/comment-manage.html" th:href="@{/admin/comment-manage}">管理评论</a><br>
+    </aside>
+
+    <footer th:fragment="site-footer">
+        &copy; Spring MVC Blog System, 2021
+    </footer>
+</body>
+</html>

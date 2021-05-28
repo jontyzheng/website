@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>标签文章</title>
+    <link rel="stylesheet" href="css/tag-posts.css" th:href="@{/css/tag-posts.css}"/>
+</head>
+<body>
+    <div th:insert="layout::headFragment"></div>
+    <header th:insert="layout::header"></header>
+
+    <div class="main-container">
+        <main>
+            您当前所在标签: <b th:text="${tag}">标签名</b>
+            <div th:unless="${ #lists.isEmpty(tagPosts) }">
+                <div th:each="post: ${tagPosts}">
+                    <article>
+                        <span th:if="${post.date}" th:text="${post.date}">发布日期</span><br/>
+                        <a th:if="${post.title}" th:text="${post.title}"  th:href="@{'/posts/postId?id='+${post.id} }">发布标题</a>
+                        <!--显示是 post.title, 点击传递的值是 post.id 触发的是 /posts/id/xx-->
+                    </article>
+                </div>
+            </div>
+            <div th:if="${#lists.isEmpty(tagPosts)}">
+                <p>当前标签下未发布任何文章</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
